@@ -1,0 +1,1744 @@
+Role: Elite Institutional Smart Money Concepts (SMC) Strategist & Final Execution Algorithm.
+
+Mission: You will receive a JSON dataset containing the last 150 candles (OHLCV) of a symbol, together with an algorithmically detected Fair Value Gap (FVG) list for the same 150 candles. You must perform a complete internal SMC/RTM and Price Action analysis as a silent thinking process, then output ONLY the final validated trade signal. You are strictly forbidden from revealing your reasoning, analysis steps, or any intermediate report of any kind.
+
+# INTERNAL ANALYSIS METHODOLOGY (perform this silently — never output it):
+1. Market Structure (Mapping): Identify the dominant trend. Pinpoint the most recent Break of Structure (BOS) and any potential Change of Character (CHoCH). Differentiate between internal (minor) and external (major) structure.
+2. Liquidity Engineering: Locate swept and un-swept liquidity pools (BSL/SSL). Pay special attention to session highs/lows and identify any engineered liquidity (Inducement / IDM) before key Points of Interest.
+3. Supply & Demand (POI Selection): Identify high-probability, unmitigated Order Blocks (OB), Breaker Blocks, and Fair Value Gaps (FVG).
+4. FVG Algorithmic Matching: Indicators are entirely removed. Your primary confirmation tool is the provided FVG JSON data. The proposed entry zone must perfectly align with a valid, unmitigated FVG within the correct structural leg.
+5. Price Action Validation: Cross-verify the SMC narrative (BOS, CHoCH, Order Blocks, Liquidity Sweeps) against raw Price Action mechanics — momentum, structural shifts, and candlestick context. If Price Action contradicts the SMC setup, reject the trade.
+6. Realistic Limit Orders: If issuing a BUY_LIMIT or SELL_LIMIT, the ENTRY price must be mathematically logical and proximal to current price action (e.g., the proximal line or 50% equilibrium of the confirmed FVG). Absolutely no distant, statistically improbable, or disconnected limit orders.
+7. Quality Control & Win Rate: Only approve setups with a flawless confluence of SMC structure + Price Action validation + FVG alignment. If the algorithmic Win Rate is evaluated below 50% due to conflicting structural data, immediately issue a HOLD.
+
+# ABSOLUTE ZERO-NOISE OUTPUT RULE
+You are strictly forbidden from generating thought processes, reasoning blocks, introductory text, section headers, or any XML/HTML tags. Do not explain your analysis. Output ONLY the final signal block exactly as formatted below, in Persian.
+
+Required Output Format (in Persian):
+Symbol: [Symbol Name]
+ACTION: [BUY_LIMIT / SELL_LIMIT / HOLD]
+ENTRY: [Exact Price / N/A]
+SL: [Exact Price (must include spread/risk buffer) / N/A]
+TP1: [Exact Price / N/A]
+TP2: [Exact Price / N/A]
+TP3: [Exact Price / N/A]
+RR: [Exact Decimal / N/A]
+WIN RATE: [Exact Percentage / N/A]
+HOLD REASON: [If HOLD, write one concise Persian sentence explaining the Price Action/FVG conflict / N/A]
+RETRY CONDITION: [If HOLD, write one concise Persian sentence defining the exact price trigger needed to re-evaluate / N/A]
+
+# JSON DATA (last 150 candles + detected FVGs):
+
+{
+    "symbol": "BNBUSDT",
+    "timeframe": "5m",
+    "candles_count": 150,
+    "candles": [
+        {
+            "Time": "2026.09.09 17:55",
+            "Open": 741.65,
+            "High": 742.01,
+            "Low": 741.44,
+            "Close": 741.44,
+            "Volume": 93.522
+        },
+        {
+            "Time": "2026.09.09 18:00",
+            "Open": 741.44,
+            "High": 741.61,
+            "Low": 741.28,
+            "Close": 741.43,
+            "Volume": 62.478
+        },
+        {
+            "Time": "2026.09.09 18:05",
+            "Open": 741.43,
+            "High": 741.59,
+            "Low": 740.26,
+            "Close": 740.36,
+            "Volume": 72.663
+        },
+        {
+            "Time": "2026.09.09 18:10",
+            "Open": 740.36,
+            "High": 740.69,
+            "Low": 740.24,
+            "Close": 740.43,
+            "Volume": 36.26
+        },
+        {
+            "Time": "2026.09.09 18:15",
+            "Open": 740.43,
+            "High": 740.52,
+            "Low": 739.93,
+            "Close": 739.93,
+            "Volume": 41.243
+        },
+        {
+            "Time": "2026.09.09 18:20",
+            "Open": 739.93,
+            "High": 740.73,
+            "Low": 739.93,
+            "Close": 740.48,
+            "Volume": 40.154
+        },
+        {
+            "Time": "2026.09.09 18:25",
+            "Open": 740.48,
+            "High": 741.12,
+            "Low": 740.1,
+            "Close": 740.96,
+            "Volume": 161.908
+        },
+        {
+            "Time": "2026.09.09 18:30",
+            "Open": 740.96,
+            "High": 741.39,
+            "Low": 740.58,
+            "Close": 740.88,
+            "Volume": 68.579
+        },
+        {
+            "Time": "2026.09.09 18:35",
+            "Open": 740.88,
+            "High": 740.98,
+            "Low": 740.56,
+            "Close": 740.8,
+            "Volume": 38.9
+        },
+        {
+            "Time": "2026.09.09 18:40",
+            "Open": 740.8,
+            "High": 741.13,
+            "Low": 740.68,
+            "Close": 741.13,
+            "Volume": 89.425
+        },
+        {
+            "Time": "2026.09.09 18:45",
+            "Open": 741.13,
+            "High": 741.16,
+            "Low": 740.43,
+            "Close": 740.91,
+            "Volume": 122.22
+        },
+        {
+            "Time": "2026.09.09 18:50",
+            "Open": 740.91,
+            "High": 740.96,
+            "Low": 739.89,
+            "Close": 740.01,
+            "Volume": 72.545
+        },
+        {
+            "Time": "2026.09.09 18:55",
+            "Open": 740.01,
+            "High": 740.26,
+            "Low": 739.67,
+            "Close": 740.0,
+            "Volume": 65.481
+        },
+        {
+            "Time": "2026.09.09 19:00",
+            "Open": 740.0,
+            "High": 740.6,
+            "Low": 739.89,
+            "Close": 739.93,
+            "Volume": 108.07
+        },
+        {
+            "Time": "2026.09.09 19:05",
+            "Open": 739.93,
+            "High": 740.43,
+            "Low": 739.6,
+            "Close": 740.13,
+            "Volume": 99.647
+        },
+        {
+            "Time": "2026.09.09 19:10",
+            "Open": 740.13,
+            "High": 741.07,
+            "Low": 740.13,
+            "Close": 741.06,
+            "Volume": 55.61
+        },
+        {
+            "Time": "2026.09.09 19:15",
+            "Open": 741.06,
+            "High": 741.73,
+            "Low": 741.01,
+            "Close": 741.31,
+            "Volume": 84.841
+        },
+        {
+            "Time": "2026.09.09 19:20",
+            "Open": 741.31,
+            "High": 741.47,
+            "Low": 741.03,
+            "Close": 741.03,
+            "Volume": 72.914
+        },
+        {
+            "Time": "2026.09.09 19:25",
+            "Open": 741.03,
+            "High": 741.09,
+            "Low": 740.35,
+            "Close": 740.36,
+            "Volume": 35.24
+        },
+        {
+            "Time": "2026.09.09 19:30",
+            "Open": 740.36,
+            "High": 740.36,
+            "Low": 739.55,
+            "Close": 740.32,
+            "Volume": 78.133
+        },
+        {
+            "Time": "2026.09.09 19:35",
+            "Open": 740.32,
+            "High": 740.34,
+            "Low": 738.23,
+            "Close": 738.44,
+            "Volume": 145.978
+        },
+        {
+            "Time": "2026.09.09 19:40",
+            "Open": 738.44,
+            "High": 738.87,
+            "Low": 738.21,
+            "Close": 738.21,
+            "Volume": 90.247
+        },
+        {
+            "Time": "2026.09.09 19:45",
+            "Open": 738.21,
+            "High": 738.49,
+            "Low": 738.08,
+            "Close": 738.13,
+            "Volume": 139.973
+        },
+        {
+            "Time": "2026.09.09 19:50",
+            "Open": 738.13,
+            "High": 738.13,
+            "Low": 736.59,
+            "Close": 736.88,
+            "Volume": 222.926
+        },
+        {
+            "Time": "2026.09.09 19:55",
+            "Open": 736.88,
+            "High": 737.43,
+            "Low": 736.52,
+            "Close": 737.24,
+            "Volume": 135.134
+        },
+        {
+            "Time": "2026.09.09 20:00",
+            "Open": 737.24,
+            "High": 737.4,
+            "Low": 736.42,
+            "Close": 736.42,
+            "Volume": 259.52
+        },
+        {
+            "Time": "2026.09.09 20:05",
+            "Open": 736.42,
+            "High": 737.57,
+            "Low": 736.42,
+            "Close": 737.53,
+            "Volume": 79.903
+        },
+        {
+            "Time": "2026.09.09 20:10",
+            "Open": 737.53,
+            "High": 737.77,
+            "Low": 736.69,
+            "Close": 737.4,
+            "Volume": 121.673
+        },
+        {
+            "Time": "2026.09.09 20:15",
+            "Open": 737.4,
+            "High": 738.06,
+            "Low": 737.14,
+            "Close": 737.15,
+            "Volume": 110.703
+        },
+        {
+            "Time": "2026.09.09 20:20",
+            "Open": 737.15,
+            "High": 737.26,
+            "Low": 736.17,
+            "Close": 736.91,
+            "Volume": 161.04
+        },
+        {
+            "Time": "2026.09.09 20:25",
+            "Open": 736.91,
+            "High": 737.16,
+            "Low": 732.99,
+            "Close": 733.88,
+            "Volume": 1179.884
+        },
+        {
+            "Time": "2026.09.09 20:30",
+            "Open": 733.88,
+            "High": 735.55,
+            "Low": 733.88,
+            "Close": 735.16,
+            "Volume": 342.132
+        },
+        {
+            "Time": "2026.09.09 20:35",
+            "Open": 735.16,
+            "High": 735.8,
+            "Low": 735.07,
+            "Close": 735.17,
+            "Volume": 146.256
+        },
+        {
+            "Time": "2026.09.09 20:40",
+            "Open": 735.17,
+            "High": 735.37,
+            "Low": 734.19,
+            "Close": 734.33,
+            "Volume": 238.008
+        },
+        {
+            "Time": "2026.09.09 20:45",
+            "Open": 734.33,
+            "High": 734.7,
+            "Low": 732.67,
+            "Close": 732.67,
+            "Volume": 136.813
+        },
+        {
+            "Time": "2026.09.09 20:50",
+            "Open": 732.67,
+            "High": 733.6,
+            "Low": 732.67,
+            "Close": 732.95,
+            "Volume": 289.864
+        },
+        {
+            "Time": "2026.09.09 20:55",
+            "Open": 732.95,
+            "High": 733.91,
+            "Low": 732.95,
+            "Close": 733.9,
+            "Volume": 135.604
+        },
+        {
+            "Time": "2026.09.09 21:00",
+            "Open": 733.9,
+            "High": 733.91,
+            "Low": 732.98,
+            "Close": 733.19,
+            "Volume": 225.861
+        },
+        {
+            "Time": "2026.09.09 21:05",
+            "Open": 733.19,
+            "High": 733.57,
+            "Low": 732.01,
+            "Close": 732.01,
+            "Volume": 205.841
+        },
+        {
+            "Time": "2026.09.09 21:10",
+            "Open": 732.01,
+            "High": 732.02,
+            "Low": 731.24,
+            "Close": 731.71,
+            "Volume": 380.523
+        },
+        {
+            "Time": "2026.09.09 21:15",
+            "Open": 731.71,
+            "High": 732.12,
+            "Low": 728.95,
+            "Close": 729.54,
+            "Volume": 1386.703
+        },
+        {
+            "Time": "2026.09.09 21:20",
+            "Open": 729.54,
+            "High": 731.4,
+            "Low": 728.84,
+            "Close": 731.4,
+            "Volume": 227.093
+        },
+        {
+            "Time": "2026.09.09 21:25",
+            "Open": 731.4,
+            "High": 732.21,
+            "Low": 731.32,
+            "Close": 731.85,
+            "Volume": 158.714
+        },
+        {
+            "Time": "2026.09.09 21:30",
+            "Open": 731.85,
+            "High": 731.85,
+            "Low": 730.39,
+            "Close": 730.51,
+            "Volume": 142.07
+        },
+        {
+            "Time": "2026.09.09 21:35",
+            "Open": 730.51,
+            "High": 730.83,
+            "Low": 729.77,
+            "Close": 730.45,
+            "Volume": 131.802
+        },
+        {
+            "Time": "2026.09.09 21:40",
+            "Open": 730.45,
+            "High": 730.65,
+            "Low": 730.02,
+            "Close": 730.14,
+            "Volume": 271.056
+        },
+        {
+            "Time": "2026.09.09 21:45",
+            "Open": 730.14,
+            "High": 730.14,
+            "Low": 728.01,
+            "Close": 728.04,
+            "Volume": 425.546
+        },
+        {
+            "Time": "2026.09.09 21:50",
+            "Open": 728.04,
+            "High": 728.77,
+            "Low": 727.95,
+            "Close": 728.75,
+            "Volume": 362.464
+        },
+        {
+            "Time": "2026.09.09 21:55",
+            "Open": 728.75,
+            "High": 728.75,
+            "Low": 723.58,
+            "Close": 725.7,
+            "Volume": 2136.421
+        },
+        {
+            "Time": "2026.09.09 22:00",
+            "Open": 725.7,
+            "High": 726.16,
+            "Low": 723.89,
+            "Close": 724.96,
+            "Volume": 393.743
+        },
+        {
+            "Time": "2026.09.09 22:05",
+            "Open": 724.96,
+            "High": 724.96,
+            "Low": 718.18,
+            "Close": 721.0,
+            "Volume": 1702.911
+        },
+        {
+            "Time": "2026.09.09 22:10",
+            "Open": 721.0,
+            "High": 722.78,
+            "Low": 720.34,
+            "Close": 720.34,
+            "Volume": 616.358
+        },
+        {
+            "Time": "2026.09.09 22:15",
+            "Open": 720.34,
+            "High": 720.63,
+            "Low": 719.11,
+            "Close": 720.33,
+            "Volume": 499.686
+        },
+        {
+            "Time": "2026.09.09 22:20",
+            "Open": 720.33,
+            "High": 722.25,
+            "Low": 720.33,
+            "Close": 722.09,
+            "Volume": 287.935
+        },
+        {
+            "Time": "2026.09.09 22:25",
+            "Open": 722.09,
+            "High": 722.68,
+            "Low": 721.37,
+            "Close": 721.98,
+            "Volume": 614.83
+        },
+        {
+            "Time": "2026.09.09 22:30",
+            "Open": 721.98,
+            "High": 721.99,
+            "Low": 719.81,
+            "Close": 720.17,
+            "Volume": 454.889
+        },
+        {
+            "Time": "2026.09.09 22:35",
+            "Open": 720.17,
+            "High": 721.53,
+            "Low": 719.5,
+            "Close": 721.38,
+            "Volume": 179.696
+        },
+        {
+            "Time": "2026.09.09 22:40",
+            "Open": 721.38,
+            "High": 721.8,
+            "Low": 720.98,
+            "Close": 721.74,
+            "Volume": 223.549
+        },
+        {
+            "Time": "2026.09.09 22:45",
+            "Open": 721.74,
+            "High": 721.74,
+            "Low": 719.33,
+            "Close": 719.46,
+            "Volume": 311.119
+        },
+        {
+            "Time": "2026.09.09 22:50",
+            "Open": 719.46,
+            "High": 720.14,
+            "Low": 719.0,
+            "Close": 719.48,
+            "Volume": 300.131
+        },
+        {
+            "Time": "2026.09.09 22:55",
+            "Open": 719.48,
+            "High": 719.5,
+            "Low": 718.41,
+            "Close": 719.21,
+            "Volume": 237.101
+        },
+        {
+            "Time": "2026.09.09 23:00",
+            "Open": 719.21,
+            "High": 721.35,
+            "Low": 719.01,
+            "Close": 721.34,
+            "Volume": 184.014
+        },
+        {
+            "Time": "2026.09.09 23:05",
+            "Open": 721.34,
+            "High": 721.59,
+            "Low": 720.55,
+            "Close": 721.27,
+            "Volume": 143.258
+        },
+        {
+            "Time": "2026.09.09 23:10",
+            "Open": 721.27,
+            "High": 721.82,
+            "Low": 721.06,
+            "Close": 721.48,
+            "Volume": 116.364
+        },
+        {
+            "Time": "2026.09.09 23:15",
+            "Open": 721.48,
+            "High": 721.7,
+            "Low": 720.86,
+            "Close": 721.65,
+            "Volume": 113.388
+        },
+        {
+            "Time": "2026.09.09 23:20",
+            "Open": 721.65,
+            "High": 721.65,
+            "Low": 720.51,
+            "Close": 721.12,
+            "Volume": 111.511
+        },
+        {
+            "Time": "2026.09.09 23:25",
+            "Open": 721.12,
+            "High": 721.75,
+            "Low": 720.96,
+            "Close": 721.68,
+            "Volume": 96.152
+        },
+        {
+            "Time": "2026.09.09 23:30",
+            "Open": 721.68,
+            "High": 722.22,
+            "Low": 721.38,
+            "Close": 722.17,
+            "Volume": 111.003
+        },
+        {
+            "Time": "2026.09.09 23:35",
+            "Open": 722.17,
+            "High": 722.44,
+            "Low": 721.79,
+            "Close": 722.44,
+            "Volume": 223.336
+        },
+        {
+            "Time": "2026.09.09 23:40",
+            "Open": 722.44,
+            "High": 722.89,
+            "Low": 721.98,
+            "Close": 722.76,
+            "Volume": 184.023
+        },
+        {
+            "Time": "2026.09.09 23:45",
+            "Open": 722.76,
+            "High": 723.88,
+            "Low": 722.49,
+            "Close": 723.88,
+            "Volume": 228.831
+        },
+        {
+            "Time": "2026.09.09 23:50",
+            "Open": 723.88,
+            "High": 723.88,
+            "Low": 722.55,
+            "Close": 723.1,
+            "Volume": 125.582
+        },
+        {
+            "Time": "2026.09.09 23:55",
+            "Open": 723.1,
+            "High": 723.18,
+            "Low": 722.72,
+            "Close": 723.09,
+            "Volume": 174.192
+        },
+        {
+            "Time": "2026.09.10 00:00",
+            "Open": 723.09,
+            "High": 724.11,
+            "Low": 722.41,
+            "Close": 724.11,
+            "Volume": 448.096
+        },
+        {
+            "Time": "2026.09.10 00:05",
+            "Open": 724.11,
+            "High": 724.43,
+            "Low": 722.81,
+            "Close": 722.97,
+            "Volume": 262.683
+        },
+        {
+            "Time": "2026.09.10 00:10",
+            "Open": 722.97,
+            "High": 723.59,
+            "Low": 722.81,
+            "Close": 722.87,
+            "Volume": 110.17
+        },
+        {
+            "Time": "2026.09.10 00:15",
+            "Open": 722.87,
+            "High": 723.08,
+            "Low": 722.23,
+            "Close": 722.24,
+            "Volume": 135.605
+        },
+        {
+            "Time": "2026.09.10 00:20",
+            "Open": 722.24,
+            "High": 722.91,
+            "Low": 721.86,
+            "Close": 722.19,
+            "Volume": 177.927
+        },
+        {
+            "Time": "2026.09.10 00:25",
+            "Open": 722.19,
+            "High": 722.37,
+            "Low": 721.48,
+            "Close": 721.97,
+            "Volume": 198.852
+        },
+        {
+            "Time": "2026.09.10 00:30",
+            "Open": 721.97,
+            "High": 722.01,
+            "Low": 720.65,
+            "Close": 721.33,
+            "Volume": 273.286
+        },
+        {
+            "Time": "2026.09.10 00:35",
+            "Open": 721.33,
+            "High": 723.04,
+            "Low": 721.33,
+            "Close": 722.41,
+            "Volume": 256.359
+        },
+        {
+            "Time": "2026.09.10 00:40",
+            "Open": 722.41,
+            "High": 722.46,
+            "Low": 721.3,
+            "Close": 721.89,
+            "Volume": 66.452
+        },
+        {
+            "Time": "2026.09.10 00:45",
+            "Open": 721.89,
+            "High": 723.2,
+            "Low": 721.3,
+            "Close": 722.45,
+            "Volume": 193.137
+        },
+        {
+            "Time": "2026.09.10 00:50",
+            "Open": 722.45,
+            "High": 722.75,
+            "Low": 721.69,
+            "Close": 722.29,
+            "Volume": 137.173
+        },
+        {
+            "Time": "2026.09.10 00:55",
+            "Open": 722.29,
+            "High": 722.39,
+            "Low": 721.0,
+            "Close": 721.0,
+            "Volume": 148.424
+        },
+        {
+            "Time": "2026.09.10 01:00",
+            "Open": 721.0,
+            "High": 723.02,
+            "Low": 720.61,
+            "Close": 722.88,
+            "Volume": 247.573
+        },
+        {
+            "Time": "2026.09.10 01:05",
+            "Open": 722.88,
+            "High": 724.73,
+            "Low": 722.88,
+            "Close": 724.25,
+            "Volume": 282.184
+        },
+        {
+            "Time": "2026.09.10 01:10",
+            "Open": 724.25,
+            "High": 724.41,
+            "Low": 723.0,
+            "Close": 723.27,
+            "Volume": 211.593
+        },
+        {
+            "Time": "2026.09.10 01:15",
+            "Open": 723.27,
+            "High": 723.28,
+            "Low": 721.96,
+            "Close": 722.8,
+            "Volume": 237.062
+        },
+        {
+            "Time": "2026.09.10 01:20",
+            "Open": 722.8,
+            "High": 722.88,
+            "Low": 720.79,
+            "Close": 721.93,
+            "Volume": 148.94
+        },
+        {
+            "Time": "2026.09.10 01:25",
+            "Open": 721.93,
+            "High": 721.93,
+            "Low": 720.33,
+            "Close": 720.33,
+            "Volume": 99.165
+        },
+        {
+            "Time": "2026.09.10 01:30",
+            "Open": 720.33,
+            "High": 720.78,
+            "Low": 718.9,
+            "Close": 719.02,
+            "Volume": 259.229
+        },
+        {
+            "Time": "2026.09.10 01:35",
+            "Open": 719.02,
+            "High": 719.03,
+            "Low": 717.22,
+            "Close": 717.65,
+            "Volume": 1200.625
+        },
+        {
+            "Time": "2026.09.10 01:40",
+            "Open": 717.65,
+            "High": 720.27,
+            "Low": 717.65,
+            "Close": 719.37,
+            "Volume": 305.856
+        },
+        {
+            "Time": "2026.09.10 01:45",
+            "Open": 719.37,
+            "High": 720.33,
+            "Low": 718.7,
+            "Close": 719.98,
+            "Volume": 263.616
+        },
+        {
+            "Time": "2026.09.10 01:50",
+            "Open": 719.98,
+            "High": 719.98,
+            "Low": 718.85,
+            "Close": 719.34,
+            "Volume": 227.631
+        },
+        {
+            "Time": "2026.09.10 01:55",
+            "Open": 719.34,
+            "High": 721.3,
+            "Low": 719.34,
+            "Close": 720.98,
+            "Volume": 119.678
+        },
+        {
+            "Time": "2026.09.10 02:00",
+            "Open": 720.98,
+            "High": 721.84,
+            "Low": 720.73,
+            "Close": 721.32,
+            "Volume": 192.747
+        },
+        {
+            "Time": "2026.09.10 02:05",
+            "Open": 721.32,
+            "High": 722.04,
+            "Low": 721.05,
+            "Close": 721.5,
+            "Volume": 85.742
+        },
+        {
+            "Time": "2026.09.10 02:10",
+            "Open": 721.5,
+            "High": 721.61,
+            "Low": 721.03,
+            "Close": 721.6,
+            "Volume": 162.949
+        },
+        {
+            "Time": "2026.09.10 02:15",
+            "Open": 721.6,
+            "High": 721.9,
+            "Low": 720.77,
+            "Close": 721.41,
+            "Volume": 152.528
+        },
+        {
+            "Time": "2026.09.10 02:20",
+            "Open": 721.41,
+            "High": 721.72,
+            "Low": 720.89,
+            "Close": 721.06,
+            "Volume": 172.417
+        },
+        {
+            "Time": "2026.09.10 02:25",
+            "Open": 721.06,
+            "High": 721.6,
+            "Low": 720.81,
+            "Close": 721.21,
+            "Volume": 203.004
+        },
+        {
+            "Time": "2026.09.10 02:30",
+            "Open": 721.21,
+            "High": 722.99,
+            "Low": 721.2,
+            "Close": 722.99,
+            "Volume": 166.114
+        },
+        {
+            "Time": "2026.09.10 02:35",
+            "Open": 722.99,
+            "High": 723.93,
+            "Low": 722.73,
+            "Close": 723.35,
+            "Volume": 168.947
+        },
+        {
+            "Time": "2026.09.10 02:40",
+            "Open": 723.35,
+            "High": 723.84,
+            "Low": 723.27,
+            "Close": 723.37,
+            "Volume": 137.757
+        },
+        {
+            "Time": "2026.09.10 02:45",
+            "Open": 723.37,
+            "High": 724.38,
+            "Low": 723.35,
+            "Close": 724.38,
+            "Volume": 113.68
+        },
+        {
+            "Time": "2026.09.10 02:50",
+            "Open": 724.38,
+            "High": 725.2,
+            "Low": 724.28,
+            "Close": 725.2,
+            "Volume": 150.477
+        },
+        {
+            "Time": "2026.09.10 02:55",
+            "Open": 725.2,
+            "High": 725.29,
+            "Low": 724.58,
+            "Close": 725.28,
+            "Volume": 152.315
+        },
+        {
+            "Time": "2026.09.10 03:00",
+            "Open": 725.28,
+            "High": 726.34,
+            "Low": 725.19,
+            "Close": 726.22,
+            "Volume": 296.945
+        },
+        {
+            "Time": "2026.09.10 03:05",
+            "Open": 726.22,
+            "High": 726.22,
+            "Low": 724.92,
+            "Close": 724.95,
+            "Volume": 249.914
+        },
+        {
+            "Time": "2026.09.10 03:10",
+            "Open": 724.95,
+            "High": 724.95,
+            "Low": 724.37,
+            "Close": 724.49,
+            "Volume": 111.444
+        },
+        {
+            "Time": "2026.09.10 03:15",
+            "Open": 724.49,
+            "High": 724.51,
+            "Low": 724.22,
+            "Close": 724.26,
+            "Volume": 134.579
+        },
+        {
+            "Time": "2026.09.10 03:20",
+            "Open": 724.26,
+            "High": 724.54,
+            "Low": 724.0,
+            "Close": 724.01,
+            "Volume": 200.172
+        },
+        {
+            "Time": "2026.09.10 03:25",
+            "Open": 724.01,
+            "High": 724.25,
+            "Low": 723.5,
+            "Close": 724.25,
+            "Volume": 348.91
+        },
+        {
+            "Time": "2026.09.10 03:30",
+            "Open": 724.25,
+            "High": 724.84,
+            "Low": 723.84,
+            "Close": 724.3,
+            "Volume": 146.83
+        },
+        {
+            "Time": "2026.09.10 03:35",
+            "Open": 724.3,
+            "High": 724.3,
+            "Low": 723.38,
+            "Close": 723.93,
+            "Volume": 110.467
+        },
+        {
+            "Time": "2026.09.10 03:40",
+            "Open": 723.93,
+            "High": 724.61,
+            "Low": 723.84,
+            "Close": 724.4,
+            "Volume": 150.809
+        },
+        {
+            "Time": "2026.09.10 03:45",
+            "Open": 724.4,
+            "High": 724.73,
+            "Low": 724.34,
+            "Close": 724.63,
+            "Volume": 108.032
+        },
+        {
+            "Time": "2026.09.10 03:50",
+            "Open": 724.63,
+            "High": 724.63,
+            "Low": 723.34,
+            "Close": 723.38,
+            "Volume": 162.186
+        },
+        {
+            "Time": "2026.09.10 03:55",
+            "Open": 723.38,
+            "High": 723.66,
+            "Low": 723.12,
+            "Close": 723.66,
+            "Volume": 147.395
+        },
+        {
+            "Time": "2026.09.10 04:00",
+            "Open": 723.66,
+            "High": 723.66,
+            "Low": 723.1,
+            "Close": 723.34,
+            "Volume": 133.471
+        },
+        {
+            "Time": "2026.09.10 04:05",
+            "Open": 723.34,
+            "High": 723.65,
+            "Low": 723.29,
+            "Close": 723.3,
+            "Volume": 92.61
+        },
+        {
+            "Time": "2026.09.10 04:10",
+            "Open": 723.3,
+            "High": 723.39,
+            "Low": 723.0,
+            "Close": 723.07,
+            "Volume": 107.68
+        },
+        {
+            "Time": "2026.09.10 04:15",
+            "Open": 723.07,
+            "High": 723.96,
+            "Low": 722.94,
+            "Close": 723.79,
+            "Volume": 205.021
+        },
+        {
+            "Time": "2026.09.10 04:20",
+            "Open": 723.79,
+            "High": 723.84,
+            "Low": 722.86,
+            "Close": 722.99,
+            "Volume": 104.697
+        },
+        {
+            "Time": "2026.09.10 04:25",
+            "Open": 722.99,
+            "High": 723.29,
+            "Low": 722.73,
+            "Close": 722.73,
+            "Volume": 94.021
+        },
+        {
+            "Time": "2026.09.10 04:30",
+            "Open": 722.73,
+            "High": 723.28,
+            "Low": 722.72,
+            "Close": 723.13,
+            "Volume": 120.721
+        },
+        {
+            "Time": "2026.09.10 04:35",
+            "Open": 723.13,
+            "High": 723.14,
+            "Low": 722.41,
+            "Close": 722.55,
+            "Volume": 139.531
+        },
+        {
+            "Time": "2026.09.10 04:40",
+            "Open": 722.55,
+            "High": 722.87,
+            "Low": 722.2,
+            "Close": 722.27,
+            "Volume": 280.817
+        },
+        {
+            "Time": "2026.09.10 04:45",
+            "Open": 722.27,
+            "High": 722.55,
+            "Low": 722.15,
+            "Close": 722.47,
+            "Volume": 216.523
+        },
+        {
+            "Time": "2026.09.10 04:50",
+            "Open": 722.47,
+            "High": 722.78,
+            "Low": 721.98,
+            "Close": 722.39,
+            "Volume": 211.289
+        },
+        {
+            "Time": "2026.09.10 04:55",
+            "Open": 722.39,
+            "High": 723.11,
+            "Low": 722.09,
+            "Close": 722.63,
+            "Volume": 252.822
+        },
+        {
+            "Time": "2026.09.10 05:00",
+            "Open": 722.63,
+            "High": 722.89,
+            "Low": 720.91,
+            "Close": 721.02,
+            "Volume": 204.3
+        },
+        {
+            "Time": "2026.09.10 05:05",
+            "Open": 721.02,
+            "High": 721.54,
+            "Low": 720.96,
+            "Close": 721.17,
+            "Volume": 270.705
+        },
+        {
+            "Time": "2026.09.10 05:10",
+            "Open": 721.17,
+            "High": 723.05,
+            "Low": 721.16,
+            "Close": 723.05,
+            "Volume": 233.639
+        },
+        {
+            "Time": "2026.09.10 05:15",
+            "Open": 723.05,
+            "High": 723.24,
+            "Low": 721.85,
+            "Close": 721.92,
+            "Volume": 240.814
+        },
+        {
+            "Time": "2026.09.10 05:20",
+            "Open": 721.92,
+            "High": 721.97,
+            "Low": 721.45,
+            "Close": 721.7,
+            "Volume": 116.197
+        },
+        {
+            "Time": "2026.09.10 05:25",
+            "Open": 721.7,
+            "High": 722.86,
+            "Low": 721.54,
+            "Close": 722.33,
+            "Volume": 142.317
+        },
+        {
+            "Time": "2026.09.10 05:30",
+            "Open": 722.33,
+            "High": 723.14,
+            "Low": 722.12,
+            "Close": 722.6,
+            "Volume": 218.263
+        },
+        {
+            "Time": "2026.09.10 05:35",
+            "Open": 722.6,
+            "High": 723.17,
+            "Low": 722.24,
+            "Close": 722.25,
+            "Volume": 161.254
+        },
+        {
+            "Time": "2026.09.10 05:40",
+            "Open": 722.25,
+            "High": 722.77,
+            "Low": 722.0,
+            "Close": 722.7,
+            "Volume": 156.511
+        },
+        {
+            "Time": "2026.09.10 05:45",
+            "Open": 722.7,
+            "High": 723.09,
+            "Low": 722.35,
+            "Close": 722.44,
+            "Volume": 233.16
+        },
+        {
+            "Time": "2026.09.10 05:50",
+            "Open": 722.44,
+            "High": 723.19,
+            "Low": 722.28,
+            "Close": 723.11,
+            "Volume": 153.047
+        },
+        {
+            "Time": "2026.09.10 05:55",
+            "Open": 723.11,
+            "High": 723.7,
+            "Low": 722.75,
+            "Close": 723.5,
+            "Volume": 211.52
+        },
+        {
+            "Time": "2026.09.10 06:00",
+            "Open": 723.5,
+            "High": 723.5,
+            "Low": 722.22,
+            "Close": 722.22,
+            "Volume": 190.755
+        },
+        {
+            "Time": "2026.09.10 06:05",
+            "Open": 722.22,
+            "High": 722.23,
+            "Low": 721.19,
+            "Close": 721.19,
+            "Volume": 315.126
+        },
+        {
+            "Time": "2026.09.10 06:10",
+            "Open": 721.19,
+            "High": 721.19,
+            "Low": 720.34,
+            "Close": 720.37,
+            "Volume": 344.425
+        },
+        {
+            "Time": "2026.09.10 06:15",
+            "Open": 720.37,
+            "High": 720.37,
+            "Low": 718.86,
+            "Close": 719.28,
+            "Volume": 569.371
+        },
+        {
+            "Time": "2026.09.10 06:20",
+            "Open": 719.28,
+            "High": 719.48,
+            "Low": 718.73,
+            "Close": 719.18,
+            "Volume": 213.039
+        }
+    ],
+    "fvg_list": [
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 18:05",
+            "candle_1_time": "2026.09.09 18:00",
+            "candle_3_time": "2026.09.09 18:10",
+            "fvg_top": 741.28,
+            "fvg_bottom": 740.69,
+            "fvg_ce": 740.99,
+            "fvg_size": 0.59,
+            "displacement_volume": 72.663
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 18:50",
+            "candle_1_time": "2026.09.09 18:45",
+            "candle_3_time": "2026.09.09 18:55",
+            "fvg_top": 740.43,
+            "fvg_bottom": 740.26,
+            "fvg_ce": 740.35,
+            "fvg_size": 0.17,
+            "displacement_volume": 72.545
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 19:10",
+            "candle_1_time": "2026.09.09 19:05",
+            "candle_3_time": "2026.09.09 19:15",
+            "fvg_top": 741.01,
+            "fvg_bottom": 740.43,
+            "fvg_ce": 740.72,
+            "fvg_size": 0.58,
+            "displacement_volume": 55.61
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:25",
+            "candle_1_time": "2026.09.09 19:20",
+            "candle_3_time": "2026.09.09 19:30",
+            "fvg_top": 741.03,
+            "fvg_bottom": 740.36,
+            "fvg_ce": 740.69,
+            "fvg_size": 0.67,
+            "displacement_volume": 35.24
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:30",
+            "candle_1_time": "2026.09.09 19:25",
+            "candle_3_time": "2026.09.09 19:35",
+            "fvg_top": 740.35,
+            "fvg_bottom": 740.34,
+            "fvg_ce": 740.35,
+            "fvg_size": 0.01,
+            "displacement_volume": 78.133
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:35",
+            "candle_1_time": "2026.09.09 19:30",
+            "candle_3_time": "2026.09.09 19:40",
+            "fvg_top": 739.55,
+            "fvg_bottom": 738.87,
+            "fvg_ce": 739.21,
+            "fvg_size": 0.68,
+            "displacement_volume": 145.978
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:45",
+            "candle_1_time": "2026.09.09 19:40",
+            "candle_3_time": "2026.09.09 19:50",
+            "fvg_top": 738.21,
+            "fvg_bottom": 738.13,
+            "fvg_ce": 738.17,
+            "fvg_size": 0.08,
+            "displacement_volume": 139.973
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:50",
+            "candle_1_time": "2026.09.09 19:45",
+            "candle_3_time": "2026.09.09 19:55",
+            "fvg_top": 738.08,
+            "fvg_bottom": 737.43,
+            "fvg_ce": 737.75,
+            "fvg_size": 0.65,
+            "displacement_volume": 222.926
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 20:25",
+            "candle_1_time": "2026.09.09 20:20",
+            "candle_3_time": "2026.09.09 20:30",
+            "fvg_top": 736.17,
+            "fvg_bottom": 735.55,
+            "fvg_ce": 735.86,
+            "fvg_size": 0.62,
+            "displacement_volume": 1179.884
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 20:40",
+            "candle_1_time": "2026.09.09 20:35",
+            "candle_3_time": "2026.09.09 20:45",
+            "fvg_top": 735.07,
+            "fvg_bottom": 734.7,
+            "fvg_ce": 734.88,
+            "fvg_size": 0.37,
+            "displacement_volume": 238.008
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 20:45",
+            "candle_1_time": "2026.09.09 20:40",
+            "candle_3_time": "2026.09.09 20:50",
+            "fvg_top": 734.19,
+            "fvg_bottom": 733.6,
+            "fvg_ce": 733.89,
+            "fvg_size": 0.59,
+            "displacement_volume": 136.813
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 21:05",
+            "candle_1_time": "2026.09.09 21:00",
+            "candle_3_time": "2026.09.09 21:10",
+            "fvg_top": 732.98,
+            "fvg_bottom": 732.02,
+            "fvg_ce": 732.5,
+            "fvg_size": 0.96,
+            "displacement_volume": 205.841
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 21:30",
+            "candle_1_time": "2026.09.09 21:25",
+            "candle_3_time": "2026.09.09 21:35",
+            "fvg_top": 731.32,
+            "fvg_bottom": 730.83,
+            "fvg_ce": 731.08,
+            "fvg_size": 0.49,
+            "displacement_volume": 142.07
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 21:45",
+            "candle_1_time": "2026.09.09 21:40",
+            "candle_3_time": "2026.09.09 21:50",
+            "fvg_top": 730.02,
+            "fvg_bottom": 728.77,
+            "fvg_ce": 729.39,
+            "fvg_size": 1.25,
+            "displacement_volume": 425.546
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 21:55",
+            "candle_1_time": "2026.09.09 21:50",
+            "candle_3_time": "2026.09.09 22:00",
+            "fvg_top": 727.95,
+            "fvg_bottom": 726.16,
+            "fvg_ce": 727.06,
+            "fvg_size": 1.79,
+            "displacement_volume": 2136.421
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 22:05",
+            "candle_1_time": "2026.09.09 22:00",
+            "candle_3_time": "2026.09.09 22:10",
+            "fvg_top": 723.89,
+            "fvg_bottom": 722.78,
+            "fvg_ce": 723.34,
+            "fvg_size": 1.11,
+            "displacement_volume": 1702.911
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 22:20",
+            "candle_1_time": "2026.09.09 22:15",
+            "candle_3_time": "2026.09.09 22:25",
+            "fvg_top": 721.37,
+            "fvg_bottom": 720.63,
+            "fvg_ce": 721.0,
+            "fvg_size": 0.74,
+            "displacement_volume": 287.935
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 22:45",
+            "candle_1_time": "2026.09.09 22:40",
+            "candle_3_time": "2026.09.09 22:50",
+            "fvg_top": 720.98,
+            "fvg_bottom": 720.14,
+            "fvg_ce": 720.56,
+            "fvg_size": 0.84,
+            "displacement_volume": 311.119
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:00",
+            "candle_1_time": "2026.09.09 22:55",
+            "candle_3_time": "2026.09.09 23:05",
+            "fvg_top": 720.55,
+            "fvg_bottom": 719.5,
+            "fvg_ce": 720.02,
+            "fvg_size": 1.05,
+            "displacement_volume": 184.014
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:30",
+            "candle_1_time": "2026.09.09 23:25",
+            "candle_3_time": "2026.09.09 23:35",
+            "fvg_top": 721.79,
+            "fvg_bottom": 721.75,
+            "fvg_ce": 721.77,
+            "fvg_size": 0.04,
+            "displacement_volume": 111.003
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:40",
+            "candle_1_time": "2026.09.09 23:35",
+            "candle_3_time": "2026.09.09 23:45",
+            "fvg_top": 722.49,
+            "fvg_bottom": 722.44,
+            "fvg_ce": 722.47,
+            "fvg_size": 0.05,
+            "displacement_volume": 184.023
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 01:00",
+            "candle_1_time": "2026.09.10 00:55",
+            "candle_3_time": "2026.09.10 01:05",
+            "fvg_top": 722.88,
+            "fvg_bottom": 722.39,
+            "fvg_ce": 722.63,
+            "fvg_size": 0.49,
+            "displacement_volume": 247.573
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 01:15",
+            "candle_1_time": "2026.09.10 01:10",
+            "candle_3_time": "2026.09.10 01:20",
+            "fvg_top": 723.0,
+            "fvg_bottom": 722.88,
+            "fvg_ce": 722.94,
+            "fvg_size": 0.12,
+            "displacement_volume": 237.062
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 01:20",
+            "candle_1_time": "2026.09.10 01:15",
+            "candle_3_time": "2026.09.10 01:25",
+            "fvg_top": 721.96,
+            "fvg_bottom": 721.93,
+            "fvg_ce": 721.94,
+            "fvg_size": 0.03,
+            "displacement_volume": 148.94
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 01:25",
+            "candle_1_time": "2026.09.10 01:20",
+            "candle_3_time": "2026.09.10 01:30",
+            "fvg_top": 720.79,
+            "fvg_bottom": 720.78,
+            "fvg_ce": 720.78,
+            "fvg_size": 0.01,
+            "displacement_volume": 99.165
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 01:30",
+            "candle_1_time": "2026.09.10 01:25",
+            "candle_3_time": "2026.09.10 01:35",
+            "fvg_top": 720.33,
+            "fvg_bottom": 719.03,
+            "fvg_ce": 719.68,
+            "fvg_size": 1.3,
+            "displacement_volume": 259.229
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 01:55",
+            "candle_1_time": "2026.09.10 01:50",
+            "candle_3_time": "2026.09.10 02:00",
+            "fvg_top": 720.73,
+            "fvg_bottom": 719.98,
+            "fvg_ce": 720.36,
+            "fvg_size": 0.75,
+            "displacement_volume": 119.678
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:30",
+            "candle_1_time": "2026.09.10 02:25",
+            "candle_3_time": "2026.09.10 02:35",
+            "fvg_top": 722.73,
+            "fvg_bottom": 721.6,
+            "fvg_ce": 722.16,
+            "fvg_size": 1.13,
+            "displacement_volume": 166.114
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:35",
+            "candle_1_time": "2026.09.10 02:30",
+            "candle_3_time": "2026.09.10 02:40",
+            "fvg_top": 723.27,
+            "fvg_bottom": 722.99,
+            "fvg_ce": 723.13,
+            "fvg_size": 0.28,
+            "displacement_volume": 168.947
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:45",
+            "candle_1_time": "2026.09.10 02:40",
+            "candle_3_time": "2026.09.10 02:50",
+            "fvg_top": 724.28,
+            "fvg_bottom": 723.84,
+            "fvg_ce": 724.06,
+            "fvg_size": 0.44,
+            "displacement_volume": 113.68
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:50",
+            "candle_1_time": "2026.09.10 02:45",
+            "candle_3_time": "2026.09.10 02:55",
+            "fvg_top": 724.58,
+            "fvg_bottom": 724.38,
+            "fvg_ce": 724.48,
+            "fvg_size": 0.2,
+            "displacement_volume": 150.477
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 03:05",
+            "candle_1_time": "2026.09.10 03:00",
+            "candle_3_time": "2026.09.10 03:10",
+            "fvg_top": 725.19,
+            "fvg_bottom": 724.95,
+            "fvg_ce": 725.07,
+            "fvg_size": 0.24,
+            "displacement_volume": 249.914
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 03:10",
+            "candle_1_time": "2026.09.10 03:05",
+            "candle_3_time": "2026.09.10 03:15",
+            "fvg_top": 724.92,
+            "fvg_bottom": 724.51,
+            "fvg_ce": 724.71,
+            "fvg_size": 0.41,
+            "displacement_volume": 111.444
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 03:40",
+            "candle_1_time": "2026.09.10 03:35",
+            "candle_3_time": "2026.09.10 03:45",
+            "fvg_top": 724.34,
+            "fvg_bottom": 724.3,
+            "fvg_ce": 724.32,
+            "fvg_size": 0.04,
+            "displacement_volume": 150.809
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 03:50",
+            "candle_1_time": "2026.09.10 03:45",
+            "candle_3_time": "2026.09.10 03:55",
+            "fvg_top": 724.34,
+            "fvg_bottom": 723.66,
+            "fvg_ce": 724.0,
+            "fvg_size": 0.68,
+            "displacement_volume": 162.186
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 05:00",
+            "candle_1_time": "2026.09.10 04:55",
+            "candle_3_time": "2026.09.10 05:05",
+            "fvg_top": 722.09,
+            "fvg_bottom": 721.54,
+            "fvg_ce": 721.82,
+            "fvg_size": 0.55,
+            "displacement_volume": 204.3
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 05:10",
+            "candle_1_time": "2026.09.10 05:05",
+            "candle_3_time": "2026.09.10 05:15",
+            "fvg_top": 721.85,
+            "fvg_bottom": 721.54,
+            "fvg_ce": 721.69,
+            "fvg_size": 0.31,
+            "displacement_volume": 233.639
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 05:25",
+            "candle_1_time": "2026.09.10 05:20",
+            "candle_3_time": "2026.09.10 05:30",
+            "fvg_top": 722.12,
+            "fvg_bottom": 721.97,
+            "fvg_ce": 722.05,
+            "fvg_size": 0.15,
+            "displacement_volume": 142.317
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:00",
+            "candle_1_time": "2026.09.10 05:55",
+            "candle_3_time": "2026.09.10 06:05",
+            "fvg_top": 722.75,
+            "fvg_bottom": 722.23,
+            "fvg_ce": 722.49,
+            "fvg_size": 0.52,
+            "displacement_volume": 190.755
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:05",
+            "candle_1_time": "2026.09.10 06:00",
+            "candle_3_time": "2026.09.10 06:10",
+            "fvg_top": 722.22,
+            "fvg_bottom": 721.19,
+            "fvg_ce": 721.71,
+            "fvg_size": 1.03,
+            "displacement_volume": 315.126
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:10",
+            "candle_1_time": "2026.09.10 06:05",
+            "candle_3_time": "2026.09.10 06:15",
+            "fvg_top": 721.19,
+            "fvg_bottom": 720.37,
+            "fvg_ce": 720.78,
+            "fvg_size": 0.82,
+            "displacement_volume": 344.425
+        },
+        {
+            "symbol": "BNBUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:15",
+            "candle_1_time": "2026.09.10 06:10",
+            "candle_3_time": "2026.09.10 06:20",
+            "fvg_top": 720.34,
+            "fvg_bottom": 719.48,
+            "fvg_ce": 719.91,
+            "fvg_size": 0.86,
+            "displacement_volume": 569.371
+        }
+    ]
+}

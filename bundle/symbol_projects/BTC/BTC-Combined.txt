@@ -1,0 +1,1864 @@
+Role: Elite Institutional Smart Money Concepts (SMC) Strategist & Final Execution Algorithm.
+
+Mission: You will receive a JSON dataset containing the last 150 candles (OHLCV) of a symbol, together with an algorithmically detected Fair Value Gap (FVG) list for the same 150 candles. You must perform a complete internal SMC/RTM and Price Action analysis as a silent thinking process, then output ONLY the final validated trade signal. You are strictly forbidden from revealing your reasoning, analysis steps, or any intermediate report of any kind.
+
+# INTERNAL ANALYSIS METHODOLOGY (perform this silently — never output it):
+1. Market Structure (Mapping): Identify the dominant trend. Pinpoint the most recent Break of Structure (BOS) and any potential Change of Character (CHoCH). Differentiate between internal (minor) and external (major) structure.
+2. Liquidity Engineering: Locate swept and un-swept liquidity pools (BSL/SSL). Pay special attention to session highs/lows and identify any engineered liquidity (Inducement / IDM) before key Points of Interest.
+3. Supply & Demand (POI Selection): Identify high-probability, unmitigated Order Blocks (OB), Breaker Blocks, and Fair Value Gaps (FVG).
+4. FVG Algorithmic Matching: Indicators are entirely removed. Your primary confirmation tool is the provided FVG JSON data. The proposed entry zone must perfectly align with a valid, unmitigated FVG within the correct structural leg.
+5. Price Action Validation: Cross-verify the SMC narrative (BOS, CHoCH, Order Blocks, Liquidity Sweeps) against raw Price Action mechanics — momentum, structural shifts, and candlestick context. If Price Action contradicts the SMC setup, reject the trade.
+6. Realistic Limit Orders: If issuing a BUY_LIMIT or SELL_LIMIT, the ENTRY price must be mathematically logical and proximal to current price action (e.g., the proximal line or 50% equilibrium of the confirmed FVG). Absolutely no distant, statistically improbable, or disconnected limit orders.
+7. Quality Control & Win Rate: Only approve setups with a flawless confluence of SMC structure + Price Action validation + FVG alignment. If the algorithmic Win Rate is evaluated below 50% due to conflicting structural data, immediately issue a HOLD.
+
+# ABSOLUTE ZERO-NOISE OUTPUT RULE
+You are strictly forbidden from generating thought processes, reasoning blocks, introductory text, section headers, or any XML/HTML tags. Do not explain your analysis. Output ONLY the final signal block exactly as formatted below, in Persian.
+
+Required Output Format (in Persian):
+Symbol: [Symbol Name]
+ACTION: [BUY_LIMIT / SELL_LIMIT / HOLD]
+ENTRY: [Exact Price / N/A]
+SL: [Exact Price (must include spread/risk buffer) / N/A]
+TP1: [Exact Price / N/A]
+TP2: [Exact Price / N/A]
+TP3: [Exact Price / N/A]
+RR: [Exact Decimal / N/A]
+WIN RATE: [Exact Percentage / N/A]
+HOLD REASON: [If HOLD, write one concise Persian sentence explaining the Price Action/FVG conflict / N/A]
+RETRY CONDITION: [If HOLD, write one concise Persian sentence defining the exact price trigger needed to re-evaluate / N/A]
+
+# JSON DATA (last 150 candles + detected FVGs):
+
+{
+    "symbol": "BTCUSDT",
+    "timeframe": "5m",
+    "candles_count": 150,
+    "candles": [
+        {
+            "Time": "2026.09.09 18:00",
+            "Open": 78776.0,
+            "High": 78792.25,
+            "Low": 78733.77,
+            "Close": 78736.0,
+            "Volume": 8.2608
+        },
+        {
+            "Time": "2026.09.09 18:05",
+            "Open": 78736.0,
+            "High": 78768.01,
+            "Low": 78664.0,
+            "Close": 78680.01,
+            "Volume": 6.46441
+        },
+        {
+            "Time": "2026.09.09 18:10",
+            "Open": 78680.01,
+            "High": 78680.01,
+            "Low": 78598.0,
+            "Close": 78600.0,
+            "Volume": 7.18162
+        },
+        {
+            "Time": "2026.09.09 18:15",
+            "Open": 78600.0,
+            "High": 78626.91,
+            "Low": 78578.6,
+            "Close": 78578.6,
+            "Volume": 7.83862
+        },
+        {
+            "Time": "2026.09.09 18:20",
+            "Open": 78578.6,
+            "High": 78640.54,
+            "Low": 78568.0,
+            "Close": 78598.78,
+            "Volume": 5.94905
+        },
+        {
+            "Time": "2026.09.09 18:25",
+            "Open": 78598.78,
+            "High": 78624.01,
+            "Low": 78591.76,
+            "Close": 78624.01,
+            "Volume": 9.19213
+        },
+        {
+            "Time": "2026.09.09 18:30",
+            "Open": 78624.01,
+            "High": 78642.0,
+            "Low": 78578.6,
+            "Close": 78583.5,
+            "Volume": 6.08062
+        },
+        {
+            "Time": "2026.09.09 18:35",
+            "Open": 78583.5,
+            "High": 78583.5,
+            "Low": 78540.0,
+            "Close": 78552.01,
+            "Volume": 5.93464
+        },
+        {
+            "Time": "2026.09.09 18:40",
+            "Open": 78552.01,
+            "High": 78555.75,
+            "Low": 78505.96,
+            "Close": 78534.01,
+            "Volume": 10.40734
+        },
+        {
+            "Time": "2026.09.09 18:45",
+            "Open": 78534.01,
+            "High": 78538.19,
+            "Low": 78485.28,
+            "Close": 78529.46,
+            "Volume": 10.69022
+        },
+        {
+            "Time": "2026.09.09 18:50",
+            "Open": 78529.46,
+            "High": 78551.81,
+            "Low": 78434.93,
+            "Close": 78434.93,
+            "Volume": 21.96777
+        },
+        {
+            "Time": "2026.09.09 18:55",
+            "Open": 78434.93,
+            "High": 78488.01,
+            "Low": 78413.05,
+            "Close": 78414.42,
+            "Volume": 9.59269
+        },
+        {
+            "Time": "2026.09.09 19:00",
+            "Open": 78414.42,
+            "High": 78480.54,
+            "Low": 78380.0,
+            "Close": 78392.27,
+            "Volume": 18.57507
+        },
+        {
+            "Time": "2026.09.09 19:05",
+            "Open": 78392.27,
+            "High": 78442.01,
+            "Low": 78340.11,
+            "Close": 78392.78,
+            "Volume": 13.51177
+        },
+        {
+            "Time": "2026.09.09 19:10",
+            "Open": 78392.78,
+            "High": 78488.0,
+            "Low": 78392.78,
+            "Close": 78484.08,
+            "Volume": 6.52866
+        },
+        {
+            "Time": "2026.09.09 19:15",
+            "Open": 78484.08,
+            "High": 78520.01,
+            "Low": 78470.0,
+            "Close": 78518.48,
+            "Volume": 6.42044
+        },
+        {
+            "Time": "2026.09.09 19:20",
+            "Open": 78518.48,
+            "High": 78575.32,
+            "Low": 78496.0,
+            "Close": 78572.0,
+            "Volume": 5.12192
+        },
+        {
+            "Time": "2026.09.09 19:25",
+            "Open": 78572.0,
+            "High": 78572.01,
+            "Low": 78530.1,
+            "Close": 78534.01,
+            "Volume": 12.88338
+        },
+        {
+            "Time": "2026.09.09 19:30",
+            "Open": 78534.01,
+            "High": 78547.18,
+            "Low": 78502.5,
+            "Close": 78544.01,
+            "Volume": 25.44213
+        },
+        {
+            "Time": "2026.09.09 19:35",
+            "Open": 78544.01,
+            "High": 78544.01,
+            "Low": 78343.26,
+            "Close": 78343.26,
+            "Volume": 18.02774
+        },
+        {
+            "Time": "2026.09.09 19:40",
+            "Open": 78343.26,
+            "High": 78384.0,
+            "Low": 78290.73,
+            "Close": 78296.82,
+            "Volume": 30.00987
+        },
+        {
+            "Time": "2026.09.09 19:45",
+            "Open": 78296.82,
+            "High": 78332.01,
+            "Low": 78290.0,
+            "Close": 78332.01,
+            "Volume": 9.94463
+        },
+        {
+            "Time": "2026.09.09 19:50",
+            "Open": 78332.01,
+            "High": 78332.01,
+            "Low": 78150.0,
+            "Close": 78230.0,
+            "Volume": 23.12013
+        },
+        {
+            "Time": "2026.09.09 19:55",
+            "Open": 78230.0,
+            "High": 78236.82,
+            "Low": 78194.0,
+            "Close": 78234.94,
+            "Volume": 9.15025
+        },
+        {
+            "Time": "2026.09.09 20:00",
+            "Open": 78234.94,
+            "High": 78273.02,
+            "Low": 78194.0,
+            "Close": 78194.0,
+            "Volume": 10.2186
+        },
+        {
+            "Time": "2026.09.09 20:05",
+            "Open": 78194.0,
+            "High": 78270.01,
+            "Low": 78192.07,
+            "Close": 78265.69,
+            "Volume": 13.60581
+        },
+        {
+            "Time": "2026.09.09 20:10",
+            "Open": 78265.69,
+            "High": 78295.52,
+            "Low": 78236.0,
+            "Close": 78254.66,
+            "Volume": 9.62501
+        },
+        {
+            "Time": "2026.09.09 20:15",
+            "Open": 78254.66,
+            "High": 78340.01,
+            "Low": 78243.41,
+            "Close": 78270.0,
+            "Volume": 12.02647
+        },
+        {
+            "Time": "2026.09.09 20:20",
+            "Open": 78270.0,
+            "High": 78270.0,
+            "Low": 78150.0,
+            "Close": 78216.0,
+            "Volume": 18.84896
+        },
+        {
+            "Time": "2026.09.09 20:25",
+            "Open": 78216.0,
+            "High": 78232.02,
+            "Low": 77937.39,
+            "Close": 78107.48,
+            "Volume": 66.42838
+        },
+        {
+            "Time": "2026.09.09 20:30",
+            "Open": 78107.48,
+            "High": 78285.99,
+            "Low": 78104.97,
+            "Close": 78243.26,
+            "Volume": 14.18912
+        },
+        {
+            "Time": "2026.09.09 20:35",
+            "Open": 78243.26,
+            "High": 78313.31,
+            "Low": 78237.08,
+            "Close": 78310.0,
+            "Volume": 7.3668
+        },
+        {
+            "Time": "2026.09.09 20:40",
+            "Open": 78310.0,
+            "High": 78317.45,
+            "Low": 78232.95,
+            "Close": 78277.61,
+            "Volume": 7.59646
+        },
+        {
+            "Time": "2026.09.09 20:45",
+            "Open": 78277.61,
+            "High": 78282.01,
+            "Low": 78104.02,
+            "Close": 78110.0,
+            "Volume": 7.08335
+        },
+        {
+            "Time": "2026.09.09 20:50",
+            "Open": 78110.0,
+            "High": 78248.01,
+            "Low": 78100.53,
+            "Close": 78206.0,
+            "Volume": 19.87563
+        },
+        {
+            "Time": "2026.09.09 20:55",
+            "Open": 78206.0,
+            "High": 78330.84,
+            "Low": 78206.0,
+            "Close": 78324.06,
+            "Volume": 10.58855
+        },
+        {
+            "Time": "2026.09.09 21:00",
+            "Open": 78324.06,
+            "High": 78324.07,
+            "Low": 78250.01,
+            "Close": 78317.33,
+            "Volume": 14.04548
+        },
+        {
+            "Time": "2026.09.09 21:05",
+            "Open": 78317.33,
+            "High": 78339.56,
+            "Low": 78268.9,
+            "Close": 78268.9,
+            "Volume": 6.85413
+        },
+        {
+            "Time": "2026.09.09 21:10",
+            "Open": 78268.9,
+            "High": 78268.91,
+            "Low": 78169.58,
+            "Close": 78238.01,
+            "Volume": 7.85471
+        },
+        {
+            "Time": "2026.09.09 21:15",
+            "Open": 78238.01,
+            "High": 78248.01,
+            "Low": 78142.0,
+            "Close": 78184.41,
+            "Volume": 6.6678
+        },
+        {
+            "Time": "2026.09.09 21:20",
+            "Open": 78184.41,
+            "High": 78246.91,
+            "Low": 78136.66,
+            "Close": 78246.91,
+            "Volume": 6.56899
+        },
+        {
+            "Time": "2026.09.09 21:25",
+            "Open": 78246.91,
+            "High": 78294.03,
+            "Low": 78235.82,
+            "Close": 78282.53,
+            "Volume": 5.05257
+        },
+        {
+            "Time": "2026.09.09 21:30",
+            "Open": 78282.53,
+            "High": 78282.54,
+            "Low": 78180.0,
+            "Close": 78180.01,
+            "Volume": 23.13116
+        },
+        {
+            "Time": "2026.09.09 21:35",
+            "Open": 78180.01,
+            "High": 78234.01,
+            "Low": 78146.0,
+            "Close": 78232.0,
+            "Volume": 10.23112
+        },
+        {
+            "Time": "2026.09.09 21:40",
+            "Open": 78232.0,
+            "High": 78271.7,
+            "Low": 78231.99,
+            "Close": 78244.39,
+            "Volume": 5.788
+        },
+        {
+            "Time": "2026.09.09 21:45",
+            "Open": 78244.39,
+            "High": 78244.4,
+            "Low": 78100.53,
+            "Close": 78100.54,
+            "Volume": 8.41204
+        },
+        {
+            "Time": "2026.09.09 21:50",
+            "Open": 78100.54,
+            "High": 78126.01,
+            "Low": 77994.15,
+            "Close": 78126.01,
+            "Volume": 15.71848
+        },
+        {
+            "Time": "2026.09.09 21:55",
+            "Open": 78126.01,
+            "High": 78145.02,
+            "Low": 78064.0,
+            "Close": 78144.01,
+            "Volume": 5.38888
+        },
+        {
+            "Time": "2026.09.09 22:00",
+            "Open": 78144.01,
+            "High": 78196.0,
+            "Low": 78036.64,
+            "Close": 78081.37,
+            "Volume": 19.28307
+        },
+        {
+            "Time": "2026.09.09 22:05",
+            "Open": 78081.37,
+            "High": 78084.01,
+            "Low": 77770.0,
+            "Close": 77854.66,
+            "Volume": 57.10619
+        },
+        {
+            "Time": "2026.09.09 22:10",
+            "Open": 77854.66,
+            "High": 77978.01,
+            "Low": 77854.66,
+            "Close": 77859.74,
+            "Volume": 20.29957
+        },
+        {
+            "Time": "2026.09.09 22:15",
+            "Open": 77859.74,
+            "High": 77960.0,
+            "Low": 77770.81,
+            "Close": 77960.0,
+            "Volume": 14.63796
+        },
+        {
+            "Time": "2026.09.09 22:20",
+            "Open": 77960.0,
+            "High": 78039.27,
+            "Low": 77959.99,
+            "Close": 78039.27,
+            "Volume": 8.16736
+        },
+        {
+            "Time": "2026.09.09 22:25",
+            "Open": 78039.27,
+            "High": 78058.01,
+            "Low": 78021.14,
+            "Close": 78031.45,
+            "Volume": 7.04513
+        },
+        {
+            "Time": "2026.09.09 22:30",
+            "Open": 78031.45,
+            "High": 78033.58,
+            "Low": 77959.78,
+            "Close": 77994.15,
+            "Volume": 8.35733
+        },
+        {
+            "Time": "2026.09.09 22:35",
+            "Open": 77994.15,
+            "High": 78050.25,
+            "Low": 77944.0,
+            "Close": 78038.0,
+            "Volume": 9.70756
+        },
+        {
+            "Time": "2026.09.09 22:40",
+            "Open": 78038.0,
+            "High": 78053.82,
+            "Low": 77982.97,
+            "Close": 78030.0,
+            "Volume": 7.37812
+        },
+        {
+            "Time": "2026.09.09 22:45",
+            "Open": 78030.0,
+            "High": 78046.01,
+            "Low": 78010.27,
+            "Close": 78010.28,
+            "Volume": 6.55176
+        },
+        {
+            "Time": "2026.09.09 22:50",
+            "Open": 78010.28,
+            "High": 78033.52,
+            "Low": 77952.0,
+            "Close": 77959.75,
+            "Volume": 7.44837
+        },
+        {
+            "Time": "2026.09.09 22:55",
+            "Open": 77959.75,
+            "High": 77960.01,
+            "Low": 77918.0,
+            "Close": 77924.01,
+            "Volume": 7.08466
+        },
+        {
+            "Time": "2026.09.09 23:00",
+            "Open": 77924.01,
+            "High": 78125.64,
+            "Low": 77920.56,
+            "Close": 78125.42,
+            "Volume": 7.84064
+        },
+        {
+            "Time": "2026.09.09 23:05",
+            "Open": 78125.42,
+            "High": 78185.42,
+            "Low": 78116.0,
+            "Close": 78185.41,
+            "Volume": 5.61386
+        },
+        {
+            "Time": "2026.09.09 23:10",
+            "Open": 78185.41,
+            "High": 78200.0,
+            "Low": 78130.35,
+            "Close": 78157.56,
+            "Volume": 8.381
+        },
+        {
+            "Time": "2026.09.09 23:15",
+            "Open": 78157.56,
+            "High": 78170.01,
+            "Low": 78100.0,
+            "Close": 78164.87,
+            "Volume": 17.89802
+        },
+        {
+            "Time": "2026.09.09 23:20",
+            "Open": 78164.87,
+            "High": 78174.53,
+            "Low": 78103.98,
+            "Close": 78116.46,
+            "Volume": 10.60538
+        },
+        {
+            "Time": "2026.09.09 23:25",
+            "Open": 78116.46,
+            "High": 78184.0,
+            "Low": 78116.46,
+            "Close": 78184.0,
+            "Volume": 3.85633
+        },
+        {
+            "Time": "2026.09.09 23:30",
+            "Open": 78184.0,
+            "High": 78244.41,
+            "Low": 78177.91,
+            "Close": 78236.64,
+            "Volume": 7.41765
+        },
+        {
+            "Time": "2026.09.09 23:35",
+            "Open": 78236.64,
+            "High": 78257.71,
+            "Low": 78217.71,
+            "Close": 78242.66,
+            "Volume": 6.89992
+        },
+        {
+            "Time": "2026.09.09 23:40",
+            "Open": 78242.66,
+            "High": 78242.67,
+            "Low": 78220.09,
+            "Close": 78230.0,
+            "Volume": 12.18916
+        },
+        {
+            "Time": "2026.09.09 23:45",
+            "Open": 78230.0,
+            "High": 78274.42,
+            "Low": 78222.73,
+            "Close": 78266.58,
+            "Volume": 6.13012
+        },
+        {
+            "Time": "2026.09.09 23:50",
+            "Open": 78266.58,
+            "High": 78295.15,
+            "Low": 78262.94,
+            "Close": 78295.14,
+            "Volume": 5.01073
+        },
+        {
+            "Time": "2026.09.09 23:55",
+            "Open": 78295.14,
+            "High": 78317.72,
+            "Low": 78263.7,
+            "Close": 78306.42,
+            "Volume": 12.43154
+        },
+        {
+            "Time": "2026.09.10 00:00",
+            "Open": 78306.42,
+            "High": 78358.08,
+            "Low": 78284.87,
+            "Close": 78347.45,
+            "Volume": 13.34356
+        },
+        {
+            "Time": "2026.09.10 00:05",
+            "Open": 78347.45,
+            "High": 78382.33,
+            "Low": 78309.51,
+            "Close": 78310.0,
+            "Volume": 7.82589
+        },
+        {
+            "Time": "2026.09.10 00:10",
+            "Open": 78310.0,
+            "High": 78373.52,
+            "Low": 78263.99,
+            "Close": 78269.29,
+            "Volume": 65.73382
+        },
+        {
+            "Time": "2026.09.10 00:15",
+            "Open": 78269.29,
+            "High": 78299.47,
+            "Low": 78255.0,
+            "Close": 78256.55,
+            "Volume": 6.15765
+        },
+        {
+            "Time": "2026.09.10 00:20",
+            "Open": 78256.55,
+            "High": 78319.66,
+            "Low": 78215.55,
+            "Close": 78278.5,
+            "Volume": 13.51379
+        },
+        {
+            "Time": "2026.09.10 00:25",
+            "Open": 78278.5,
+            "High": 78330.84,
+            "Low": 78243.48,
+            "Close": 78325.31,
+            "Volume": 15.56734
+        },
+        {
+            "Time": "2026.09.10 00:30",
+            "Open": 78325.31,
+            "High": 78325.31,
+            "Low": 78175.69,
+            "Close": 78255.85,
+            "Volume": 14.52741
+        },
+        {
+            "Time": "2026.09.10 00:35",
+            "Open": 78255.85,
+            "High": 78309.72,
+            "Low": 78241.63,
+            "Close": 78247.99,
+            "Volume": 10.33968
+        },
+        {
+            "Time": "2026.09.10 00:40",
+            "Open": 78247.99,
+            "High": 78248.0,
+            "Low": 78159.97,
+            "Close": 78159.98,
+            "Volume": 7.72053
+        },
+        {
+            "Time": "2026.09.10 00:45",
+            "Open": 78159.98,
+            "High": 78244.59,
+            "Low": 78130.48,
+            "Close": 78166.0,
+            "Volume": 18.13058
+        },
+        {
+            "Time": "2026.09.10 00:50",
+            "Open": 78166.0,
+            "High": 78216.91,
+            "Low": 78124.0,
+            "Close": 78137.15,
+            "Volume": 16.74429
+        },
+        {
+            "Time": "2026.09.10 00:55",
+            "Open": 78137.15,
+            "High": 78196.77,
+            "Low": 78092.7,
+            "Close": 78180.69,
+            "Volume": 72.98609
+        },
+        {
+            "Time": "2026.09.10 01:00",
+            "Open": 78180.69,
+            "High": 78295.37,
+            "Low": 78172.0,
+            "Close": 78295.37,
+            "Volume": 24.67952
+        },
+        {
+            "Time": "2026.09.10 01:05",
+            "Open": 78295.37,
+            "High": 78508.49,
+            "Low": 78295.36,
+            "Close": 78423.6,
+            "Volume": 19.11122
+        },
+        {
+            "Time": "2026.09.10 01:10",
+            "Open": 78423.6,
+            "High": 78431.45,
+            "Low": 78296.48,
+            "Close": 78334.79,
+            "Volume": 6.83305
+        },
+        {
+            "Time": "2026.09.10 01:15",
+            "Open": 78334.79,
+            "High": 78338.24,
+            "Low": 78176.47,
+            "Close": 78284.0,
+            "Volume": 18.35416
+        },
+        {
+            "Time": "2026.09.10 01:20",
+            "Open": 78284.0,
+            "High": 78284.01,
+            "Low": 78170.0,
+            "Close": 78252.0,
+            "Volume": 9.44646
+        },
+        {
+            "Time": "2026.09.10 01:25",
+            "Open": 78252.0,
+            "High": 78252.01,
+            "Low": 78176.0,
+            "Close": 78176.01,
+            "Volume": 2.84114
+        },
+        {
+            "Time": "2026.09.10 01:30",
+            "Open": 78176.01,
+            "High": 78204.01,
+            "Low": 78045.77,
+            "Close": 78046.01,
+            "Volume": 13.96855
+        },
+        {
+            "Time": "2026.09.10 01:35",
+            "Open": 78046.01,
+            "High": 78046.01,
+            "Low": 77952.0,
+            "Close": 77961.56,
+            "Volume": 11.92251
+        },
+        {
+            "Time": "2026.09.10 01:40",
+            "Open": 77961.56,
+            "High": 78242.01,
+            "Low": 77961.56,
+            "Close": 78174.92,
+            "Volume": 16.07991
+        },
+        {
+            "Time": "2026.09.10 01:45",
+            "Open": 78174.92,
+            "High": 78174.92,
+            "Low": 78062.0,
+            "Close": 78100.01,
+            "Volume": 11.88774
+        },
+        {
+            "Time": "2026.09.10 01:50",
+            "Open": 78100.01,
+            "High": 78110.98,
+            "Low": 77990.38,
+            "Close": 78018.55,
+            "Volume": 12.48012
+        },
+        {
+            "Time": "2026.09.10 01:55",
+            "Open": 78018.55,
+            "High": 78134.01,
+            "Low": 78002.51,
+            "Close": 78094.0,
+            "Volume": 7.35488
+        },
+        {
+            "Time": "2026.09.10 02:00",
+            "Open": 78094.0,
+            "High": 78100.54,
+            "Low": 78032.0,
+            "Close": 78032.01,
+            "Volume": 6.75882
+        },
+        {
+            "Time": "2026.09.10 02:05",
+            "Open": 78032.0,
+            "High": 78088.01,
+            "Low": 78011.06,
+            "Close": 78045.21,
+            "Volume": 4.95045
+        },
+        {
+            "Time": "2026.09.10 02:10",
+            "Open": 78045.21,
+            "High": 78067.71,
+            "Low": 78003.48,
+            "Close": 78040.01,
+            "Volume": 16.00742
+        },
+        {
+            "Time": "2026.09.10 02:15",
+            "Open": 78040.01,
+            "High": 78054.22,
+            "Low": 77986.95,
+            "Close": 78050.0,
+            "Volume": 7.18705
+        },
+        {
+            "Time": "2026.09.10 02:20",
+            "Open": 78050.0,
+            "High": 78070.01,
+            "Low": 78000.01,
+            "Close": 78000.01,
+            "Volume": 9.94404
+        },
+        {
+            "Time": "2026.09.10 02:25",
+            "Open": 78000.01,
+            "High": 78024.01,
+            "Low": 77980.0,
+            "Close": 78024.0,
+            "Volume": 6.63024
+        },
+        {
+            "Time": "2026.09.10 02:30",
+            "Open": 78024.0,
+            "High": 78160.0,
+            "Low": 78006.6,
+            "Close": 78160.0,
+            "Volume": 9.52621
+        },
+        {
+            "Time": "2026.09.10 02:35",
+            "Open": 78160.0,
+            "High": 78219.65,
+            "Low": 78129.97,
+            "Close": 78191.39,
+            "Volume": 11.95996
+        },
+        {
+            "Time": "2026.09.10 02:40",
+            "Open": 78191.39,
+            "High": 78268.9,
+            "Low": 78170.24,
+            "Close": 78256.76,
+            "Volume": 7.81381
+        },
+        {
+            "Time": "2026.09.10 02:45",
+            "Open": 78256.76,
+            "High": 78319.25,
+            "Low": 78251.67,
+            "Close": 78313.48,
+            "Volume": 4.80598
+        },
+        {
+            "Time": "2026.09.10 02:50",
+            "Open": 78313.48,
+            "High": 78361.53,
+            "Low": 78292.0,
+            "Close": 78361.53,
+            "Volume": 8.90832
+        },
+        {
+            "Time": "2026.09.10 02:55",
+            "Open": 78361.53,
+            "High": 78373.1,
+            "Low": 78339.28,
+            "Close": 78357.87,
+            "Volume": 4.98245
+        },
+        {
+            "Time": "2026.09.10 03:00",
+            "Open": 78357.87,
+            "High": 78544.54,
+            "Low": 78338.52,
+            "Close": 78512.82,
+            "Volume": 21.24057
+        },
+        {
+            "Time": "2026.09.10 03:05",
+            "Open": 78512.82,
+            "High": 78512.82,
+            "Low": 78408.72,
+            "Close": 78411.01,
+            "Volume": 8.99166
+        },
+        {
+            "Time": "2026.09.10 03:10",
+            "Open": 78411.01,
+            "High": 78427.53,
+            "Low": 78375.83,
+            "Close": 78382.07,
+            "Volume": 7.00589
+        },
+        {
+            "Time": "2026.09.10 03:15",
+            "Open": 78382.07,
+            "High": 78386.45,
+            "Low": 78335.79,
+            "Close": 78364.55,
+            "Volume": 7.87844
+        },
+        {
+            "Time": "2026.09.10 03:20",
+            "Open": 78364.55,
+            "High": 78392.0,
+            "Low": 78325.33,
+            "Close": 78325.34,
+            "Volume": 7.87237
+        },
+        {
+            "Time": "2026.09.10 03:25",
+            "Open": 78325.34,
+            "High": 78400.0,
+            "Low": 78306.39,
+            "Close": 78395.73,
+            "Volume": 16.43967
+        },
+        {
+            "Time": "2026.09.10 03:30",
+            "Open": 78395.73,
+            "High": 78450.0,
+            "Low": 78363.91,
+            "Close": 78388.25,
+            "Volume": 14.59719
+        },
+        {
+            "Time": "2026.09.10 03:35",
+            "Open": 78388.25,
+            "High": 78388.26,
+            "Low": 78325.35,
+            "Close": 78352.74,
+            "Volume": 4.21256
+        },
+        {
+            "Time": "2026.09.10 03:40",
+            "Open": 78352.74,
+            "High": 78398.25,
+            "Low": 78321.86,
+            "Close": 78368.68,
+            "Volume": 9.75688
+        },
+        {
+            "Time": "2026.09.10 03:45",
+            "Open": 78368.68,
+            "High": 78450.0,
+            "Low": 78364.61,
+            "Close": 78450.0,
+            "Volume": 7.17799
+        },
+        {
+            "Time": "2026.09.10 03:50",
+            "Open": 78450.0,
+            "High": 78450.0,
+            "Low": 78333.08,
+            "Close": 78337.9,
+            "Volume": 12.71043
+        },
+        {
+            "Time": "2026.09.10 03:55",
+            "Open": 78337.9,
+            "High": 78337.91,
+            "Low": 78278.0,
+            "Close": 78328.09,
+            "Volume": 17.25825
+        },
+        {
+            "Time": "2026.09.10 04:00",
+            "Open": 78328.09,
+            "High": 78352.66,
+            "Low": 78303.28,
+            "Close": 78352.66,
+            "Volume": 6.66805
+        },
+        {
+            "Time": "2026.09.10 04:05",
+            "Open": 78352.66,
+            "High": 78404.42,
+            "Low": 78352.65,
+            "Close": 78373.07,
+            "Volume": 5.31744
+        },
+        {
+            "Time": "2026.09.10 04:10",
+            "Open": 78373.07,
+            "High": 78377.75,
+            "Low": 78344.85,
+            "Close": 78344.85,
+            "Volume": 4.25776
+        },
+        {
+            "Time": "2026.09.10 04:15",
+            "Open": 78344.85,
+            "High": 78415.96,
+            "Low": 78344.85,
+            "Close": 78415.95,
+            "Volume": 5.45661
+        },
+        {
+            "Time": "2026.09.10 04:20",
+            "Open": 78415.95,
+            "High": 78429.24,
+            "Low": 78378.45,
+            "Close": 78384.23,
+            "Volume": 3.43408
+        },
+        {
+            "Time": "2026.09.10 04:25",
+            "Open": 78384.23,
+            "High": 78419.67,
+            "Low": 78376.9,
+            "Close": 78387.62,
+            "Volume": 1.96565
+        },
+        {
+            "Time": "2026.09.10 04:30",
+            "Open": 78387.62,
+            "High": 78416.41,
+            "Low": 78380.79,
+            "Close": 78405.2,
+            "Volume": 4.00578
+        },
+        {
+            "Time": "2026.09.10 04:35",
+            "Open": 78405.2,
+            "High": 78405.2,
+            "Low": 78356.26,
+            "Close": 78359.72,
+            "Volume": 9.13085
+        },
+        {
+            "Time": "2026.09.10 04:40",
+            "Open": 78359.72,
+            "High": 78366.09,
+            "Low": 78339.99,
+            "Close": 78339.99,
+            "Volume": 7.63737
+        },
+        {
+            "Time": "2026.09.10 04:45",
+            "Open": 78339.99,
+            "High": 78374.77,
+            "Low": 78331.71,
+            "Close": 78348.1,
+            "Volume": 9.93197
+        },
+        {
+            "Time": "2026.09.10 04:50",
+            "Open": 78348.1,
+            "High": 78359.76,
+            "Low": 78300.0,
+            "Close": 78345.17,
+            "Volume": 7.02105
+        },
+        {
+            "Time": "2026.09.10 04:55",
+            "Open": 78345.17,
+            "High": 78437.99,
+            "Low": 78328.1,
+            "Close": 78400.01,
+            "Volume": 15.96967
+        },
+        {
+            "Time": "2026.09.10 05:00",
+            "Open": 78400.01,
+            "High": 78415.68,
+            "Low": 78277.12,
+            "Close": 78277.13,
+            "Volume": 6.47928
+        },
+        {
+            "Time": "2026.09.10 05:05",
+            "Open": 78277.13,
+            "High": 78325.42,
+            "Low": 78270.75,
+            "Close": 78317.59,
+            "Volume": 11.25617
+        },
+        {
+            "Time": "2026.09.10 05:10",
+            "Open": 78317.59,
+            "High": 78486.34,
+            "Low": 78317.58,
+            "Close": 78478.75,
+            "Volume": 19.76864
+        },
+        {
+            "Time": "2026.09.10 05:15",
+            "Open": 78478.75,
+            "High": 78478.75,
+            "Low": 78377.08,
+            "Close": 78385.18,
+            "Volume": 11.85329
+        },
+        {
+            "Time": "2026.09.10 05:20",
+            "Open": 78385.18,
+            "High": 78386.0,
+            "Low": 78358.63,
+            "Close": 78384.63,
+            "Volume": 10.75747
+        },
+        {
+            "Time": "2026.09.10 05:25",
+            "Open": 78384.63,
+            "High": 78516.66,
+            "Low": 78358.63,
+            "Close": 78476.6,
+            "Volume": 70.68944
+        },
+        {
+            "Time": "2026.09.10 05:30",
+            "Open": 78476.6,
+            "High": 78520.04,
+            "Low": 78465.31,
+            "Close": 78476.57,
+            "Volume": 18.11952
+        },
+        {
+            "Time": "2026.09.10 05:35",
+            "Open": 78476.57,
+            "High": 78520.04,
+            "Low": 78446.56,
+            "Close": 78446.56,
+            "Volume": 9.79666
+        },
+        {
+            "Time": "2026.09.10 05:40",
+            "Open": 78446.56,
+            "High": 78446.57,
+            "Low": 78401.75,
+            "Close": 78418.85,
+            "Volume": 17.41489
+        },
+        {
+            "Time": "2026.09.10 05:45",
+            "Open": 78418.85,
+            "High": 78434.47,
+            "Low": 78408.64,
+            "Close": 78415.26,
+            "Volume": 5.38901
+        },
+        {
+            "Time": "2026.09.10 05:50",
+            "Open": 78415.26,
+            "High": 78549.99,
+            "Low": 78415.26,
+            "Close": 78532.26,
+            "Volume": 10.74358
+        },
+        {
+            "Time": "2026.09.10 05:55",
+            "Open": 78532.26,
+            "High": 78559.0,
+            "Low": 78486.0,
+            "Close": 78536.72,
+            "Volume": 21.7553
+        },
+        {
+            "Time": "2026.09.10 06:00",
+            "Open": 78536.72,
+            "High": 78542.05,
+            "Low": 78447.03,
+            "Close": 78447.03,
+            "Volume": 9.03115
+        },
+        {
+            "Time": "2026.09.10 06:05",
+            "Open": 78447.03,
+            "High": 78458.01,
+            "Low": 78419.68,
+            "Close": 78419.69,
+            "Volume": 10.19566
+        },
+        {
+            "Time": "2026.09.10 06:10",
+            "Open": 78419.69,
+            "High": 78419.69,
+            "Low": 78306.0,
+            "Close": 78308.91,
+            "Volume": 10.64776
+        },
+        {
+            "Time": "2026.09.10 06:15",
+            "Open": 78308.91,
+            "High": 78308.92,
+            "Low": 78149.86,
+            "Close": 78222.0,
+            "Volume": 17.31888
+        },
+        {
+            "Time": "2026.09.10 06:20",
+            "Open": 78222.0,
+            "High": 78232.01,
+            "Low": 78178.24,
+            "Close": 78214.58,
+            "Volume": 20.02272
+        },
+        {
+            "Time": "2026.09.10 06:25",
+            "Open": 78214.58,
+            "High": 78234.01,
+            "Low": 78198.23,
+            "Close": 78226.01,
+            "Volume": 8.60753
+        }
+    ],
+    "fvg_list": [
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 18:05",
+            "candle_1_time": "2026.09.09 18:00",
+            "candle_3_time": "2026.09.09 18:10",
+            "fvg_top": 78733.77,
+            "fvg_bottom": 78680.01,
+            "fvg_ce": 78706.89,
+            "fvg_size": 53.76,
+            "displacement_volume": 6.46441
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 18:10",
+            "candle_1_time": "2026.09.09 18:05",
+            "candle_3_time": "2026.09.09 18:15",
+            "fvg_top": 78664.0,
+            "fvg_bottom": 78626.91,
+            "fvg_ce": 78645.46,
+            "fvg_size": 37.09,
+            "displacement_volume": 7.18162
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 18:30",
+            "candle_1_time": "2026.09.09 18:25",
+            "candle_3_time": "2026.09.09 18:35",
+            "fvg_top": 78591.76,
+            "fvg_bottom": 78583.5,
+            "fvg_ce": 78587.63,
+            "fvg_size": 8.26,
+            "displacement_volume": 6.08062
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 18:35",
+            "candle_1_time": "2026.09.09 18:30",
+            "candle_3_time": "2026.09.09 18:40",
+            "fvg_top": 78578.6,
+            "fvg_bottom": 78555.75,
+            "fvg_ce": 78567.18,
+            "fvg_size": 22.85,
+            "displacement_volume": 5.93464
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 18:40",
+            "candle_1_time": "2026.09.09 18:35",
+            "candle_3_time": "2026.09.09 18:45",
+            "fvg_top": 78540.0,
+            "fvg_bottom": 78538.19,
+            "fvg_ce": 78539.1,
+            "fvg_size": 1.81,
+            "displacement_volume": 10.40734
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 19:10",
+            "candle_1_time": "2026.09.09 19:05",
+            "candle_3_time": "2026.09.09 19:15",
+            "fvg_top": 78470.0,
+            "fvg_bottom": 78442.01,
+            "fvg_ce": 78456.01,
+            "fvg_size": 27.99,
+            "displacement_volume": 6.52866
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 19:15",
+            "candle_1_time": "2026.09.09 19:10",
+            "candle_3_time": "2026.09.09 19:20",
+            "fvg_top": 78496.0,
+            "fvg_bottom": 78488.0,
+            "fvg_ce": 78492.0,
+            "fvg_size": 8.0,
+            "displacement_volume": 6.42044
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 19:20",
+            "candle_1_time": "2026.09.09 19:15",
+            "candle_3_time": "2026.09.09 19:25",
+            "fvg_top": 78530.1,
+            "fvg_bottom": 78520.01,
+            "fvg_ce": 78525.05,
+            "fvg_size": 10.09,
+            "displacement_volume": 5.12192
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:35",
+            "candle_1_time": "2026.09.09 19:30",
+            "candle_3_time": "2026.09.09 19:40",
+            "fvg_top": 78502.5,
+            "fvg_bottom": 78384.0,
+            "fvg_ce": 78443.25,
+            "fvg_size": 118.5,
+            "displacement_volume": 18.02774
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:40",
+            "candle_1_time": "2026.09.09 19:35",
+            "candle_3_time": "2026.09.09 19:45",
+            "fvg_top": 78343.26,
+            "fvg_bottom": 78332.01,
+            "fvg_ce": 78337.63,
+            "fvg_size": 11.25,
+            "displacement_volume": 30.00987
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 19:50",
+            "candle_1_time": "2026.09.09 19:45",
+            "candle_3_time": "2026.09.09 19:55",
+            "fvg_top": 78290.0,
+            "fvg_bottom": 78236.82,
+            "fvg_ce": 78263.41,
+            "fvg_size": 53.18,
+            "displacement_volume": 23.12013
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 20:20",
+            "candle_1_time": "2026.09.09 20:15",
+            "candle_3_time": "2026.09.09 20:25",
+            "fvg_top": 78243.41,
+            "fvg_bottom": 78232.02,
+            "fvg_ce": 78237.71,
+            "fvg_size": 11.39,
+            "displacement_volume": 18.84896
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 20:30",
+            "candle_1_time": "2026.09.09 20:25",
+            "candle_3_time": "2026.09.09 20:35",
+            "fvg_top": 78237.08,
+            "fvg_bottom": 78232.02,
+            "fvg_ce": 78234.55,
+            "fvg_size": 5.06,
+            "displacement_volume": 14.18912
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 20:55",
+            "candle_1_time": "2026.09.09 20:50",
+            "candle_3_time": "2026.09.09 21:00",
+            "fvg_top": 78250.01,
+            "fvg_bottom": 78248.01,
+            "fvg_ce": 78249.01,
+            "fvg_size": 2.0,
+            "displacement_volume": 10.58855
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 21:10",
+            "candle_1_time": "2026.09.09 21:05",
+            "candle_3_time": "2026.09.09 21:15",
+            "fvg_top": 78268.9,
+            "fvg_bottom": 78248.01,
+            "fvg_ce": 78258.45,
+            "fvg_size": 20.89,
+            "displacement_volume": 7.85471
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 21:30",
+            "candle_1_time": "2026.09.09 21:25",
+            "candle_3_time": "2026.09.09 21:35",
+            "fvg_top": 78235.82,
+            "fvg_bottom": 78234.01,
+            "fvg_ce": 78234.92,
+            "fvg_size": 1.81,
+            "displacement_volume": 23.13116
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 21:45",
+            "candle_1_time": "2026.09.09 21:40",
+            "candle_3_time": "2026.09.09 21:50",
+            "fvg_top": 78231.99,
+            "fvg_bottom": 78126.01,
+            "fvg_ce": 78179.0,
+            "fvg_size": 105.98,
+            "displacement_volume": 8.41204
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 22:05",
+            "candle_1_time": "2026.09.09 22:00",
+            "candle_3_time": "2026.09.09 22:10",
+            "fvg_top": 78036.64,
+            "fvg_bottom": 77978.01,
+            "fvg_ce": 78007.32,
+            "fvg_size": 58.63,
+            "displacement_volume": 57.10619
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 22:20",
+            "candle_1_time": "2026.09.09 22:15",
+            "candle_3_time": "2026.09.09 22:25",
+            "fvg_top": 78021.14,
+            "fvg_bottom": 77960.0,
+            "fvg_ce": 77990.57,
+            "fvg_size": 61.14,
+            "displacement_volume": 8.16736
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.09 22:50",
+            "candle_1_time": "2026.09.09 22:45",
+            "candle_3_time": "2026.09.09 22:55",
+            "fvg_top": 78010.27,
+            "fvg_bottom": 77960.01,
+            "fvg_ce": 77985.14,
+            "fvg_size": 50.26,
+            "displacement_volume": 7.44837
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:00",
+            "candle_1_time": "2026.09.09 22:55",
+            "candle_3_time": "2026.09.09 23:05",
+            "fvg_top": 78116.0,
+            "fvg_bottom": 77960.01,
+            "fvg_ce": 78038.01,
+            "fvg_size": 155.99,
+            "displacement_volume": 7.84064
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:05",
+            "candle_1_time": "2026.09.09 23:00",
+            "candle_3_time": "2026.09.09 23:10",
+            "fvg_top": 78130.35,
+            "fvg_bottom": 78125.64,
+            "fvg_ce": 78127.99,
+            "fvg_size": 4.71,
+            "displacement_volume": 5.61386
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:25",
+            "candle_1_time": "2026.09.09 23:20",
+            "candle_3_time": "2026.09.09 23:30",
+            "fvg_top": 78177.91,
+            "fvg_bottom": 78174.53,
+            "fvg_ce": 78176.22,
+            "fvg_size": 3.38,
+            "displacement_volume": 3.85633
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:30",
+            "candle_1_time": "2026.09.09 23:25",
+            "candle_3_time": "2026.09.09 23:35",
+            "fvg_top": 78217.71,
+            "fvg_bottom": 78184.0,
+            "fvg_ce": 78200.86,
+            "fvg_size": 33.71,
+            "displacement_volume": 7.41765
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.09 23:45",
+            "candle_1_time": "2026.09.09 23:40",
+            "candle_3_time": "2026.09.09 23:50",
+            "fvg_top": 78262.94,
+            "fvg_bottom": 78242.67,
+            "fvg_ce": 78252.8,
+            "fvg_size": 20.27,
+            "displacement_volume": 6.13012
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 00:10",
+            "candle_1_time": "2026.09.10 00:05",
+            "candle_3_time": "2026.09.10 00:15",
+            "fvg_top": 78309.51,
+            "fvg_bottom": 78299.47,
+            "fvg_ce": 78304.49,
+            "fvg_size": 10.04,
+            "displacement_volume": 65.73382
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 01:00",
+            "candle_1_time": "2026.09.10 00:55",
+            "candle_3_time": "2026.09.10 01:05",
+            "fvg_top": 78295.36,
+            "fvg_bottom": 78196.77,
+            "fvg_ce": 78246.07,
+            "fvg_size": 98.59,
+            "displacement_volume": 24.67952
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 01:05",
+            "candle_1_time": "2026.09.10 01:00",
+            "candle_3_time": "2026.09.10 01:10",
+            "fvg_top": 78296.48,
+            "fvg_bottom": 78295.37,
+            "fvg_ce": 78295.92,
+            "fvg_size": 1.11,
+            "displacement_volume": 19.11122
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 01:15",
+            "candle_1_time": "2026.09.10 01:10",
+            "candle_3_time": "2026.09.10 01:20",
+            "fvg_top": 78296.48,
+            "fvg_bottom": 78284.01,
+            "fvg_ce": 78290.24,
+            "fvg_size": 12.47,
+            "displacement_volume": 18.35416
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 01:30",
+            "candle_1_time": "2026.09.10 01:25",
+            "candle_3_time": "2026.09.10 01:35",
+            "fvg_top": 78176.0,
+            "fvg_bottom": 78046.01,
+            "fvg_ce": 78111.01,
+            "fvg_size": 129.99,
+            "displacement_volume": 13.96855
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 01:40",
+            "candle_1_time": "2026.09.10 01:35",
+            "candle_3_time": "2026.09.10 01:45",
+            "fvg_top": 78062.0,
+            "fvg_bottom": 78046.01,
+            "fvg_ce": 78054.01,
+            "fvg_size": 15.99,
+            "displacement_volume": 16.07991
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:30",
+            "candle_1_time": "2026.09.10 02:25",
+            "candle_3_time": "2026.09.10 02:35",
+            "fvg_top": 78129.97,
+            "fvg_bottom": 78024.01,
+            "fvg_ce": 78076.99,
+            "fvg_size": 105.96,
+            "displacement_volume": 9.52621
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:35",
+            "candle_1_time": "2026.09.10 02:30",
+            "candle_3_time": "2026.09.10 02:40",
+            "fvg_top": 78170.24,
+            "fvg_bottom": 78160.0,
+            "fvg_ce": 78165.12,
+            "fvg_size": 10.24,
+            "displacement_volume": 11.95996
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:40",
+            "candle_1_time": "2026.09.10 02:35",
+            "candle_3_time": "2026.09.10 02:45",
+            "fvg_top": 78251.67,
+            "fvg_bottom": 78219.65,
+            "fvg_ce": 78235.66,
+            "fvg_size": 32.02,
+            "displacement_volume": 7.81381
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:45",
+            "candle_1_time": "2026.09.10 02:40",
+            "candle_3_time": "2026.09.10 02:50",
+            "fvg_top": 78292.0,
+            "fvg_bottom": 78268.9,
+            "fvg_ce": 78280.45,
+            "fvg_size": 23.1,
+            "displacement_volume": 4.80598
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 02:50",
+            "candle_1_time": "2026.09.10 02:45",
+            "candle_3_time": "2026.09.10 02:55",
+            "fvg_top": 78339.28,
+            "fvg_bottom": 78319.25,
+            "fvg_ce": 78329.26,
+            "fvg_size": 20.03,
+            "displacement_volume": 8.90832
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 03:00",
+            "candle_1_time": "2026.09.10 02:55",
+            "candle_3_time": "2026.09.10 03:05",
+            "fvg_top": 78408.72,
+            "fvg_bottom": 78373.1,
+            "fvg_ce": 78390.91,
+            "fvg_size": 35.62,
+            "displacement_volume": 21.24057
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 03:10",
+            "candle_1_time": "2026.09.10 03:05",
+            "candle_3_time": "2026.09.10 03:15",
+            "fvg_top": 78408.72,
+            "fvg_bottom": 78386.45,
+            "fvg_ce": 78397.58,
+            "fvg_size": 22.27,
+            "displacement_volume": 7.00589
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 03:50",
+            "candle_1_time": "2026.09.10 03:45",
+            "candle_3_time": "2026.09.10 03:55",
+            "fvg_top": 78364.61,
+            "fvg_bottom": 78337.91,
+            "fvg_ce": 78351.26,
+            "fvg_size": 26.7,
+            "displacement_volume": 12.71043
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 04:00",
+            "candle_1_time": "2026.09.10 03:55",
+            "candle_3_time": "2026.09.10 04:05",
+            "fvg_top": 78352.65,
+            "fvg_bottom": 78337.91,
+            "fvg_ce": 78345.28,
+            "fvg_size": 14.74,
+            "displacement_volume": 6.66805
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 04:15",
+            "candle_1_time": "2026.09.10 04:10",
+            "candle_3_time": "2026.09.10 04:20",
+            "fvg_top": 78378.45,
+            "fvg_bottom": 78377.75,
+            "fvg_ce": 78378.1,
+            "fvg_size": 0.7,
+            "displacement_volume": 5.45661
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 04:35",
+            "candle_1_time": "2026.09.10 04:30",
+            "candle_3_time": "2026.09.10 04:40",
+            "fvg_top": 78380.79,
+            "fvg_bottom": 78366.09,
+            "fvg_ce": 78373.44,
+            "fvg_size": 14.7,
+            "displacement_volume": 9.13085
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 05:00",
+            "candle_1_time": "2026.09.10 04:55",
+            "candle_3_time": "2026.09.10 05:05",
+            "fvg_top": 78328.1,
+            "fvg_bottom": 78325.42,
+            "fvg_ce": 78326.76,
+            "fvg_size": 2.68,
+            "displacement_volume": 6.47928
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 05:10",
+            "candle_1_time": "2026.09.10 05:05",
+            "candle_3_time": "2026.09.10 05:15",
+            "fvg_top": 78377.08,
+            "fvg_bottom": 78325.42,
+            "fvg_ce": 78351.25,
+            "fvg_size": 51.66,
+            "displacement_volume": 19.76864
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 05:25",
+            "candle_1_time": "2026.09.10 05:20",
+            "candle_3_time": "2026.09.10 05:30",
+            "fvg_top": 78465.31,
+            "fvg_bottom": 78386.0,
+            "fvg_ce": 78425.65,
+            "fvg_size": 79.31,
+            "displacement_volume": 70.68944
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 05:35",
+            "candle_1_time": "2026.09.10 05:30",
+            "candle_3_time": "2026.09.10 05:40",
+            "fvg_top": 78465.31,
+            "fvg_bottom": 78446.57,
+            "fvg_ce": 78455.94,
+            "fvg_size": 18.74,
+            "displacement_volume": 9.79666
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 05:40",
+            "candle_1_time": "2026.09.10 05:35",
+            "candle_3_time": "2026.09.10 05:45",
+            "fvg_top": 78446.56,
+            "fvg_bottom": 78434.47,
+            "fvg_ce": 78440.51,
+            "fvg_size": 12.09,
+            "displacement_volume": 17.41489
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bullish",
+            "middle_candle_time": "2026.09.10 05:50",
+            "candle_1_time": "2026.09.10 05:45",
+            "candle_3_time": "2026.09.10 05:55",
+            "fvg_top": 78486.0,
+            "fvg_bottom": 78434.47,
+            "fvg_ce": 78460.24,
+            "fvg_size": 51.53,
+            "displacement_volume": 10.74358
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:00",
+            "candle_1_time": "2026.09.10 05:55",
+            "candle_3_time": "2026.09.10 06:05",
+            "fvg_top": 78486.0,
+            "fvg_bottom": 78458.01,
+            "fvg_ce": 78472.01,
+            "fvg_size": 27.99,
+            "displacement_volume": 9.03115
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:05",
+            "candle_1_time": "2026.09.10 06:00",
+            "candle_3_time": "2026.09.10 06:10",
+            "fvg_top": 78447.03,
+            "fvg_bottom": 78419.69,
+            "fvg_ce": 78433.36,
+            "fvg_size": 27.34,
+            "displacement_volume": 10.19566
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:10",
+            "candle_1_time": "2026.09.10 06:05",
+            "candle_3_time": "2026.09.10 06:15",
+            "fvg_top": 78419.68,
+            "fvg_bottom": 78308.92,
+            "fvg_ce": 78364.3,
+            "fvg_size": 110.76,
+            "displacement_volume": 10.64776
+        },
+        {
+            "symbol": "BTCUSDT",
+            "type": "Bearish",
+            "middle_candle_time": "2026.09.10 06:15",
+            "candle_1_time": "2026.09.10 06:10",
+            "candle_3_time": "2026.09.10 06:20",
+            "fvg_top": 78306.0,
+            "fvg_bottom": 78232.01,
+            "fvg_ce": 78269.01,
+            "fvg_size": 73.99,
+            "displacement_volume": 17.31888
+        }
+    ]
+}
