@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import time
 import threading
@@ -45,6 +46,11 @@ PYTHON_EXECUTABLE = "python"  # در ویندوز دستور python3 معمول�
 SUBPROCESS_TIMEOUT = None  # هیچ‌وقت timeout نشه؛ هر چقدر طول بکشه صبر می‌کنه
 AI_REQUEST_TIMEOUT = None  # درخواست به هوش مصنوعی هم هیچ‌وقت timeout نشه؛ هر چقدر طول بکشه صبر می‌کنه
 TELEGRAM_MAX_CHARS = 4000
+
+# حداقل وین‌ریت لازم برای اینکه سیگنال به تلگرام ارسال بشه (بر حسب درصد).
+# هر سیگنالی که وین‌ریتش کمتر از این مقدار باشه (یا اصلاً وین‌ریت نداشته باشه،
+# مثل HOLD یا N/A) فرستاده نمی‌شه. این فیلتر داخل کد اعمال می‌شه، نه با تغییر پرامپت.
+MIN_WIN_RATE = 60.0
 
 KNOWN_CHATS_FILE = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "known_chats.json"
@@ -255,6 +261,36 @@ def ask_ai(prompt_text: str) -> Optional[str]:
         return None
 
 
+# ============================ فیلتر وین‌ریت (کد-محور، نه پرامپت‌محور) ============================
+_WIN_RATE_PATTERN = re.compile(r"WIN\s*RATE\s*:\s*([\d]+(?:\.[\d]+)?)\s*%?", re.IGNORECASE)
+
+
+def extract_win_rate(ai_response: str) -> Optional[float]:
+    """
+    خط "WIN RATE: XX%" رو از متن پاسخ هوش مصنوعی با ریجکس پیدا می‌کنه و عدد
+    رو به float برمی‌گردونه. اگه خط پیدا نشه یا مقدارش N/A (یا هر چیز غیرعددی)
+    باشه، None برمی‌گردونه. این فیلتر کاملاً در کد پایتون انجام می‌شه، نه با
+    تغییر پرامپت هوش مصنوعی.
+    """
+    if not ai_response:
+        return None
+    match = _WIN_RATE_PATTERN.search(ai_response)
+    if not match:
+        return None
+    try:
+        return float(match.group(1))
+    except ValueError:
+        return None
+
+
+def should_send_signal(ai_response: str) -> bool:
+    """فقط سیگنال‌هایی که وین‌ریت عددی و >= MIN_WIN_RATE دارن اجازه ارسال دارن."""
+    win_rate = extract_win_rate(ai_response)
+    if win_rate is None:
+        return False
+    return win_rate >= MIN_WIN_RATE
+
+
 # ============================ پردازش یک پروژه کامل ============================
 def process_single_project(project: Dict) -> None:
     name = project["name"]
@@ -266,31 +302,40 @@ def process_single_project(project: Dict) -> None:
     # بعد از اجرا هم وجودش رو تایید می‌کنه، پس محتوایی که چند خط پایین‌تر
     # خونده و مستقیماً به هوش مصنوعی داده می‌شه، همیشه آپدیته و مال همین
     # دوره‌ست؛ نه یه فایل قدیمی از اجرای قبلی.
+    # نکته: از این به بعد هیچ متنی (خطا، هشدار، وضعیت خالی بودن فایل و ...)
+    # به تلگرام فرستاده نمی‌شه؛ فقط و فقط توی لاگ سرور ثبت می‌شه. تنها چیزی
+    # که ممکنه به تلگرام بره، سیگنال معتبریه که از فیلتر وین‌ریت رد شده باشه.
     output_path = os.path.join(project_dir, project["output_txt"])
     error_text = run_python_project(project["script"], project_dir, output_path)
     if error_text is not None:
-        # فقط ۶۰۰ کاراکتر آخر خطا رو می‌فرستیم تا پیام تلگرام شلوغ نشه
         short_error = error_text[-600:]
-        broadcast_telegram_message(
-            f"⚠️ خطا در اجرای اسکریپت {name} ({project['script']}):\n\n{short_error}"
-        )
+        logger.error(f"اجرای اسکریپت {name} ({project['script']}) با خطا مواجه شد:\n{short_error}")
         return
 
     prompt_text = read_output_file(output_path)
     if not prompt_text:
-        broadcast_telegram_message(f"⚠️ فایل خروجی {name} خالی یا پیدا نشد.")
+        logger.error(f"فایل خروجی {name} خالی یا پیدا نشد.")
         return
 
     # همین‌جا، بلافاصله بعد از خوندن فایل تازه‌ساخته‌شده، به هوش مصنوعی داده می‌شه
     ai_response = ask_ai(prompt_text)
     if ai_response is None:
-        broadcast_telegram_message(f"⚠️ خطا در دریافت پاسخ هوش مصنوعی برای {name}")
+        logger.error(f"دریافت پاسخ هوش مصنوعی برای {name} با خطا مواجه شد.")
+        return
+
+    win_rate = extract_win_rate(ai_response)
+
+    if not should_send_signal(ai_response):
+        if win_rate is None:
+            logger.info(f"{name}: سیگنال بدون وین‌ریت معتبر (مثلاً HOLD/N/A) — ارسال نشد.")
+        else:
+            logger.info(f"{name}: وین‌ریت {win_rate}% کمتر از حد نصاب {MIN_WIN_RATE}% — ارسال نشد.")
         return
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     message = f"✅ {name}\n🕒 {timestamp}\n\n{ai_response}"
     broadcast_telegram_message(message)
-    logger.info(f"پایان اجرای {name} و ارسال پیام به همه چت‌ها.")
+    logger.info(f"{name}: وین‌ریت {win_rate}% >= {MIN_WIN_RATE}% — سیگنال به همه چت‌ها ارسال شد.")
 
 
 def run_all_projects_once() -> None:
