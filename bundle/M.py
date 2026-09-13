@@ -379,6 +379,22 @@ def start_health_server() -> None:
             self.end_headers()
             self.wfile.write("Bot is running.".encode("utf-8"))
 
+        def do_HEAD(self):
+            # بعضی مانیتورها (از جمله بخشی از پروب‌های UptimeRobot) به‌جای GET
+            # درخواست HEAD می‌فرستن. بدون این متد، BaseHTTPRequestHandler
+            # خودکار 501 Not Implemented برمی‌گردونه و مانیتور سرویس رو Down
+            # نشون می‌ده، حتی وقتی ربات کاملاً سالمه.
+            self.send_response(200)
+            self.send_header("Content-type", "text/plain; charset=utf-8")
+            self.end_headers()
+
+        def do_POST(self):
+            # برای اطمینان از این‌که هیچ نوع پروب دیگه‌ای هم 501 نگیره.
+            self.send_response(200)
+            self.send_header("Content-type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write("Bot is running.".encode("utf-8"))
+
         def log_message(self, format, *args):
             # جلوگیری از شلوغ شدن لاگ‌ها با هر پینگ سلامت
             return
@@ -400,3 +416,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
